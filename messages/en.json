@@ -1,0 +1,201 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "propertyType": "Property Types",
+    "allProperties": "All Properties",
+    "land": "Land",
+    "villa": "Villa",
+    "exchange": "Exchange Rate",
+    "exchangeFull": "Exchange Rates",
+    "area": "Area",
+    "areaFull": "Location Areas",
+    "gallery": "Gallery",
+    "galleryFull": "Photo Gallery",
+    "contact": "Contact Us"
+  },
+  "Hero": {
+    "badge": "✨ EXCLUSIVE INVESTMENT",
+    "headline": "Where Paradise",
+    "highlight": "Meets Investment",
+    "subheadline": "discover premium properties with guaranteed legal status — from comfortable homes to high-value investment assets 🏙️🚀",
+    "cta_primary": "Explore Properties",
+    "cta_secondary": "Free Consultation"
+  },
+  "PropertyTypes": {
+    "badge": "Browse Categories",
+    "title": "Search by Property Type",
+    "subtitle": "choose the property type that best fits your investment plan or dream home in Bali 🏘️🎯",
+    "land_label": "High Investment",
+    "land_name": "Land",
+    "villa_label": "Staycation",
+    "villa_name": "Villa"
+  },
+  "BestDeals": {
+    "badge": "🔥 Hot Offers",
+    "title": "Exclusive Offers",
+    "subtitle": "get premium properties at special prices this week for your smart investment 💎✨",
+    "emptyTitle": "No Best Deals yet",
+    "emptyHint": "Mark a property with ✅ isBestDeal in Sanity Studio"
+  },
+  "LatestListings": {
+    "badge": "✨ Latest Updates",
+    "title": "New Property Collection",
+    "subtitle": "Explore a variety of the latest properties we've just added, perfect for your future investment 🌟🚀",
+    "viewAll": "View All",
+    "emptyTitle": "No properties available yet",
+    "emptyHint": "Add properties in your Sanity Studio! 🚀",
+    "locationFallback": "Location not specified",
+    "bestDeal": "🔥 Best Deal"
+  },
+  "PropertyCard": {
+    "startingFrom": "Starting From",
+    "priceOnRequest": "Price on Request",
+    "available": "Available",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "landArea": "Land Area",
+    "viewDetails": "View Details"
+  },
+  "GalleryPreview": {
+    "title": "Gallery & On-Site Progress",
+    "subtitle": "\"A closer look at construction progress and the smiles of our satisfied clients.\" 📸 🤝",
+    "altFallback": "Nirvana Bali Documentation",
+    "emptyText": "No documentation photos in Sanity Studio yet.",
+    "viewAll": "View Full Gallery"
+  },
+  "Testimonials": {
+    "sectionLabel": "Success Stories",
+    "title": "What Our",
+    "titleHighlight": "Trusted Clients Say"
+  },
+  "Partners": {
+    "label": "Trusted & Supported By",
+    "partner": "Developer Partners"
+  },
+  "CallToAction": {
+    "stepLabel": "Your First Step",
+    "title": "Start Your",
+    "titleHighlight": "Property Journey",
+    "subtitle": "fill in the form and our expert team will contact you shortly to schedule a site visit to your dream property 🏡✨",
+    "benefit1": "Free & transparent property consultation",
+    "benefit2": "Free on-site survey assistance",
+    "benefit3": "Legal documentation & mortgage assistance",
+    "orContact": "Or contact us directly:",
+    "fieldName": "Full Name",
+    "fieldNamePlaceholder": "Enter your name...",
+    "fieldDate": "Planned Date",
+    "fieldService": "Select Service",
+    "service1": "Site Survey",
+    "service2": "General Consultation",
+    "service3": "Price & Mortgage Inquiry",
+    "fieldNote": "Additional Notes (Optional)",
+    "fieldNotePlaceholder": "E.g. I'm interested in a villa near Lovina...",
+    "submit": "Send via WhatsApp",
+    "waMessage": "Hello Nirvana Bali team, I am {nama}.\n\nI would like to schedule *{layanan}* on *{tanggal}*.\n\nAdditional notes: {pesan}\n\nPlease provide more information. Thank you."
+  },
+  "Footer": {
+    "tagline": "Your trusted partner for finding your dream property in Bali. Exclusive villas and premium land. Free and transparent consultation.",
+    "followInstagram": "Follow Instagram ➔",
+    "locationContact": "Location & Contact",
+    "location": "Buleleng, Bali\n(City Center Area)",
+    "serviceArea": "Service Area & Types:",
+    "serviceAreaList": "Singaraja City • Lovina • Sukasada",
+    "serviceTypes": "Villa • Land",
+    "mapsTitle": "Google Maps",
+    "rights": "All rights reserved.",
+    "engineered": "Engineered by"
+  },
+  "KursPage": {
+    "heroBadge": "GLOBAL INVESTMENT CURRENCY",
+    "heroTitle": "Real-time Exchange Rates",
+    "heroTitleHighlight": "Nirvana Bali Property",
+    "heroSubtitle": "Instantly convert property prices in IDR, USD, or RUB. Exchange rates are updated in real-time every day.",
+    "loadingRates": "Fetching latest rates...",
+    "converterTitle": "Currency Converter",
+    "converterSubtitle": "Instant conversion between currencies",
+    "labelFrom": "From",
+    "labelTo": "To",
+    "inputPlaceholder": "Enter amount",
+    "loading": "Loading...",
+    "todayChange": "today",
+    "baseCurrency": "Base Currency",
+    "propertyExampleTitle": "Property Price Example",
+    "propertyExampleSubtitle": "Premium Bali Villa — price in 3 currencies",
+    "propertyExampleNote": "* Example: 3BR Villa in Bali. IDR price as base. Rates updated in real-time.",
+    "feature1Title": "Multi-Currency",
+    "feature1Desc": "Display property prices in IDR, USD, and RUB to suit your global investors' needs.",
+    "feature2Title": "Real-time API",
+    "feature2Desc": "Rates are fetched directly from ExchangeRate-API daily — always accurate and reliable.",
+    "feature3Title": "Safe Investment",
+    "feature3Desc": "Nirvana Bali properties are backed by SHM legal certificates and transparent pricing with no hidden fees."
+  },
+  "KontakPage": {
+    "headerLabel": "Connect with Nirvana Bali",
+    "headerTitle": "Contact Us",
+    "headerSubtitle": "Have questions about our exclusive units or want to schedule a site visit? Our expert team is ready to help you find your dream property in Bali.",
+    "channelsTitle": "Direct Communication Channels",
+    "whatsappDesc": "Fast response via Chat",
+    "whatsappAction": "Chat Now",
+    "telegramDesc": "Official Consultation",
+    "telegramAction": "Send Message",
+    "instagramDesc": "Unit Updates & Promos",
+    "instagramAction": "Follow Us",
+    "youtubeDesc": "Video Tours & Unit Reviews",
+    "youtubeAction": "Watch Videos",
+    "facebookDesc": "Community & Information",
+    "facebookAction": "Join Group",
+    "officeTitle": "Marketing Office",
+    "officeDesc": "Visit our office for face-to-face consultation and to view the project model directly.",
+    "addressLabel": "Main Address",
+    "addressValue": "Jl. Raya Lovina, Anturan, Buleleng, Bali 81119",
+    "hoursLabel": "Operating Hours",
+    "hoursValue": "Monday - Saturday, 07:00 - 18:00 WITA",
+    "emailLabel": "Official Email",
+    "bookingTitle": "Book a Site Survey",
+    "bookingDesc": "Choose the best time for you to visit the project location. Our team will arrange an exclusive pick-up for you.",
+    "fieldName": "Your Full Name",
+    "fieldEmail": "Active Email Address",
+    "fieldWhatsapp": "WhatsApp Number (e.g. 0812...)",
+    "fieldDate": "Visit Date",
+    "fieldMessage": "Interested in which unit? Or any special requests? (Optional)",
+    "submitButton": "Register My Survey Schedule",
+    "submitNote": "*Our team will confirm schedule availability via WhatsApp within 24 hours.",
+    "alertSuccess": "Thank you! Your survey booking request has been received. Our team will contact you shortly via WhatsApp."
+  },
+  "GaleriPage": {
+    "headerLabel": "Visual Portfolio",
+    "headerTitle": "Photo Gallery",
+    "headerSubtitle": "Explore the exclusive property portfolio of Nirvana Bali. Luxury villas and premium land plots in Bali.",
+    "emptyTitle": "No photos available yet",
+    "emptySubtitle": "Add photos in Sanity Studio to display the gallery.",
+    "filterAll": "All",
+    "loading": "Loading gallery..."
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "We're ready to help you find the perfect property",
+    "name": "Full Name",
+    "email": "Email Address",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "Gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Explore our beautiful property portfolio"
+  },
+  "PropertiPage": {
+    "filterAll": "All Properties",
+    "filterVilla": "Villa",
+    "filterLand": "Land"
+  },
+  "PropertyDetail": {
+    "landArea": "Land Area",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "descriptionTitle": "Property Description",
+    "locationTitle": "Map Location",
+    "totalInvestment": "Total Investment",
+    "whatsappButton": "Ask via WhatsApp",
+    "multiCurrencyDesc": "This property price is available in IDR, USD & RUB. Click to view real-time exchange rates."
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "Navbar": {
+    "home": "Beranda",
+    "propertyType": "Tipe Properti",
+    "allProperties": "Semua Properti",
+    "land": "Tanah",
+    "villa": "Villa",
+    "exchange": "Kurs",
+    "exchangeFull": "Kurs Mata Uang",
+    "area": "Area",
+    "areaFull": "Area Lokasi",
+    "gallery": "Galeri",
+    "galleryFull": "Galeri Foto",
+    "contact": "Hubungi Kami"
+  },
+  "Hero": {
+    "badge": "✨ INVESTASI EXCLUSIVE",
+    "headline": "Where Paradise",
+    "highlight": "Meets Investment",
+    "subheadline": "temukan properti premium dengan legalitas terjamin mulai dari hunian nyaman hingga aset investasi bernilai tinggi 🏙️🚀",
+    "cta_primary": "Eksplorasi Properti",
+    "cta_secondary": "Konsultasi Gratis"
+  },
+  "PropertyTypes": {
+    "badge": "Kategori Pilihan",
+    "title": "Cari Berdasarkan Tipe",
+    "subtitle": "pilih tipe properti yang paling pas dengan rencana investasi atau hunian impianmu di bali 🏘️🎯",
+    "land_label": "Investasi Tinggi",
+    "land_name": "Tanah",
+    "villa_label": "Staycation",
+    "villa_name": "Villa"
+  },
+  "BestDeals": {
+    "badge": "🔥 Hot Offers",
+    "title": "Penawaran Eksklusif",
+    "subtitle": "dapatkan properti premium dengan harga spesial khusus minggu ini untuk investasi cerdasmu 💎✨",
+    "emptyTitle": "Belum ada Best Deal",
+    "emptyHint": "Tandai properti dengan ✅ isBestDeal di Sanity Studio"
+  },
+  "LatestListings": {
+    "badge": "✨ Update Terbaru",
+    "title": "Koleksi Properti Baru",
+    "subtitle": "jelajahi berbagai pilihan properti terbaru yang baru saja kami tambahkan khusus untuk investasi masa depanmu 🌟🚀",
+    "viewAll": "Lihat Semua",
+    "emptyTitle": "Belum ada properti tersedia",
+    "emptyHint": "Tambahkan properti di Sanity Studio kamu! 🚀",
+    "locationFallback": "Lokasi belum diisi",
+    "bestDeal": "🔥 Best Deal"
+  },
+  "PropertyCard": {
+    "startingFrom": "Mulai Dari",
+    "priceOnRequest": "Harga by Request",
+    "available": "Tersedia",
+    "bedrooms": "Kamar Tidur",
+    "bathrooms": "Kamar Mandi",
+    "landArea": "Luas Tanah",
+    "viewDetails": "Lihat Detail"
+  },
+  "GalleryPreview": {
+    "title": "Galeri & Progres On-Site",
+    "subtitle": "\"Melihat lebih dekat progres pembangunan dan senyum puas para konsumen kami.\" 📸 🤝",
+    "altFallback": "Dokumentasi Nirvana Bali",
+    "emptyText": "Belum ada foto dokumentasi di Sanity Studio.",
+    "viewAll": "Lihat Galeri Lengkap"
+  },
+  "Testimonials": {
+    "sectionLabel": "Kisah Sukses",
+    "title": "Apa Kata Klien",
+    "titleHighlight": "Tepercaya Kami"
+  },
+  "Partners": {
+    "label": "Dipercaya & Didukung Oleh",
+    "partner": "Developer Rekanan"
+  },
+  "CallToAction": {
+    "stepLabel": "Langkah Awalmu",
+    "title": "Mulai Perjalanan",
+    "titleHighlight": "Properti Anda",
+    "subtitle": "isi formulir di samping dan tim ahli kami akan segera menghubungi untuk mengatur jadwal survei langsung ke lokasi properti idamanmu 🏡✨",
+    "benefit1": "Konsultasi properti gratis & transparan",
+    "benefit2": "Pendampingan survei lokasi tanpa biaya",
+    "benefit3": "Bantuan pengurusan legalitas & KPR",
+    "orContact": "Atau hubungi langsung:",
+    "fieldName": "Nama Lengkap",
+    "fieldNamePlaceholder": "Masukkan nama Anda...",
+    "fieldDate": "Rencana Tanggal",
+    "fieldService": "Pilih Layanan",
+    "service1": "Survei Lokasi",
+    "service2": "Konsultasi Umum",
+    "service3": "Tanya Harga & KPR",
+    "fieldNote": "Catatan Khusus (Opsional)",
+    "fieldNotePlaceholder": "Contoh: Saya tertarik dengan villa di area Lovina...",
+    "submit": "Kirim via WhatsApp",
+    "waMessage": "Halo tim Nirvana Bali, saya {nama}.\n\nSaya ingin mengatur jadwal untuk *{layanan}* pada tanggal *{tanggal}*.\n\nCatatan tambahan: {pesan}\n\nMohon info lebih lanjutnya, terima kasih."
+  },
+  "Footer": {
+    "tagline": "Partner terpercaya Anda untuk menemukan properti impian di Bali. Villa eksklusif dan Tanah premium. Konsultasi gratis dan transparan.",
+    "followInstagram": "Follow Instagram ➔",
+    "locationContact": "Lokasi & Kontak",
+    "location": "Buleleng, Bali\n(Kawasan Pusat Kota)",
+    "serviceArea": "Area Layanan & Tipe:",
+    "serviceAreaList": "Singaraja Kota • Lovina • Sukasada",
+    "serviceTypes": "Villa • Tanah",
+    "mapsTitle": "Google Maps",
+    "rights": "All rights reserved.",
+    "engineered": "Engineered by"
+  },
+  "KursPage": {
+    "heroBadge": "GLOBAL INVESTMENT CURRENCY",
+    "heroTitle": "Kurs Real-time",
+    "heroTitleHighlight": "Properti Nirvana Bali",
+    "heroSubtitle": "Konversi harga properti secara instan dalam mata uang IDR, USD, atau RUB. Data kurs diperbarui secara real-time setiap hari.",
+    "loadingRates": "Mengambil kurs terbaru...",
+    "converterTitle": "Kalkulator Konversi",
+    "converterSubtitle": "Konversi instan antar mata uang",
+    "labelFrom": "Dari",
+    "labelTo": "Ke",
+    "inputPlaceholder": "Masukkan nominal",
+    "loading": "Memuat...",
+    "todayChange": "hari ini",
+    "baseCurrency": "Base Currency",
+    "propertyExampleTitle": "Contoh Harga Properti",
+    "propertyExampleSubtitle": "Villa premium Bali — harga dalam 3 mata uang",
+    "propertyExampleNote": "* Contoh: Villa 3BR di Bali. Harga IDR sebagai basis. Kurs diperbarui real-time.",
+    "feature1Title": "Multi-Currency",
+    "feature1Desc": "Tampilkan harga properti dalam IDR, USD, dan RUB sesuai kebutuhan investor global Anda.",
+    "feature2Title": "Real-time API",
+    "feature2Desc": "Kurs diambil langsung dari ExchangeRate-API setiap hari, selalu akurat dan terpercaya.",
+    "feature3Title": "Investasi Aman",
+    "feature3Desc": "Properti Nirvana Bali didukung legalitas SHM dan harga transparan tanpa biaya tersembunyi."
+  },
+  "KontakPage": {
+    "headerLabel": "Terhubung dengan Nirvana Bali",
+    "headerTitle": "Hubungi Kami",
+    "headerSubtitle": "Punya pertanyaan mengenai unit eksklusif kami atau ingin menjadwalkan kunjungan lokasi? Tim ahli kami siap membantu Anda mewujudkan hunian impian di Bali.",
+    "channelsTitle": "Saluran Komunikasi Langsung",
+    "whatsappDesc": "Respon cepat via Chat",
+    "whatsappAction": "Chat Sekarang",
+    "telegramDesc": "Konsultasi Official",
+    "telegramAction": "Kirim Pesan",
+    "instagramDesc": "Update Unit & Promo",
+    "instagramAction": "Ikuti Kami",
+    "youtubeDesc": "Video Tur & Review Unit",
+    "youtubeAction": "Tonton Video",
+    "facebookDesc": "Komunitas & Informasi",
+    "facebookAction": "Gabung Grup",
+    "officeTitle": "Kantor Pemasaran",
+    "officeDesc": "Kunjungi kantor kami untuk konsultasi tatap muka dan melihat maket proyek secara langsung.",
+    "addressLabel": "Alamat Utama",
+    "addressValue": "Jl. Raya Lovina, Anturan, Buleleng, Bali 81119",
+    "hoursLabel": "Jam Operasional",
+    "hoursValue": "Senin - Sabtu, 07.00 - 18.00 WITA",
+    "emailLabel": "Email Resmi",
+    "bookingTitle": "Booking Survei Lokasi",
+    "bookingDesc": "Pilih waktu terbaik Anda untuk mengunjungi lokasi proyek. Tim kami akan menyiapkan penjemputan eksklusif untuk Anda.",
+    "fieldName": "Nama Lengkap Anda",
+    "fieldEmail": "Alamat Email Aktif",
+    "fieldWhatsapp": "Nomor WhatsApp (Contoh: 0812...)",
+    "fieldDate": "Tanggal Kunjungan",
+    "fieldMessage": "Tertarik unit mana? Atau ada permintaan khusus? (Opsional)",
+    "submitButton": "Daftar Jadwal Survei Saya",
+    "submitNote": "*Tim kami akan melakukan konfirmasi ketersediaan jadwal via WhatsApp dalam 1x24 jam.",
+    "alertSuccess": "Terima kasih! Permintaan booking survei Anda telah kami terima. Tim kami akan segera menghubungi Anda via WhatsApp."
+  },
+  "GaleriPage": {
+    "headerLabel": "Portofolio Visual",
+    "headerTitle": "Galeri Foto",
+    "headerSubtitle": "Jelajahi portofolio properti eksklusif Nirvana Bali. Villa mewah dan kavling premium di Bali.",
+    "emptyTitle": "Belum ada foto tersedia",
+    "emptySubtitle": "Tambahkan foto di Sanity Studio untuk menampilkan galeri.",
+    "filterAll": "Semua",
+    "loading": "Memuat galeri..."
+  },
+  "Contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Kami siap membantu Anda menemukan properti yang sempurna",
+    "name": "Nama Lengkap",
+    "email": "Alamat Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan"
+  },
+  "Gallery": {
+    "title": "Galeri Foto",
+    "subtitle": "Jelajahi portofolio properti indah kami"
+  },
+  "PropertiPage": {
+    "filterAll": "Semua Properti",
+    "filterVilla": "Villa",
+    "filterLand": "Tanah"
+  },
+  "PropertyDetail": {
+    "landArea": "Luas Tanah",
+    "bedrooms": "Kamar Tidur",
+    "bathrooms": "Kamar Mandi",
+    "descriptionTitle": "Deskripsi Properti",
+    "locationTitle": "Lokasi Peta",
+    "totalInvestment": "Total Investasi",
+    "whatsappButton": "Tanya via WhatsApp",
+    "multiCurrencyDesc": "Harga properti ini tersedia dalam IDR, USD & RUB. Klik untuk melihat kurs real-time."
+  }
+}

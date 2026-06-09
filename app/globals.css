@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ── Global Box Model Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Smooth Scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Global Background: Desert Sand ── */
+body {
+  background-color: #F2EBE5;
+}
+
+/* ── Ken Burns Keyframe (CSS fallback) ── */
+@keyframes kenBurns {
+  0%   { transform: scale(1.0); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1.0); }
+}
+
+/* === OVERRIDE CSS SWIPER BIAR TITIKNYA TURUN & RAPI === */
+
+/* Panah Best Deals */
+.best-deals-swiper .swiper-button-next,
+.best-deals-swiper .swiper-button-prev {
+  color: #D05B43 !important;
+  background-color: rgb(242 235 229 / 90%);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  transition: all 0.3s ease;
+}
+.best-deals-swiper .swiper-button-next:after,
+.best-deals-swiper .swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+/* Memaksa jarak untuk wadah titik-titik (Berlaku untuk keduanya) */
+.best-deals-swiper, .latest-listings-swiper {
+  padding-bottom: 5rem !important; /* Ini jurus memanjangkan area bawahnya */
+}
+
+.swiper-pagination {
+  bottom: 0px !important; /* Titiknya didorong mentok ke dasar padding tadi */
+}
+
+/* Styling Titik Secara General */
+.swiper-pagination-bullet {
+  background: #1F2229 !important;
+  opacity: 0.2 !important;
+  width: 10px !important;
+  height: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Warna Titik Aktif Best Deals (Terracotta) */
+.best-deals-swiper .swiper-pagination-bullet-active {
+  background: #D05B43 !important;
+  opacity: 1 !important;
+  width: 35px !important;
+  border-radius: 5px !important;
+}
+
+/* Warna Titik Aktif Latest Listings (Terracotta) */
+.latest-listings-swiper .swiper-pagination-bullet-active {
+  background: #D05B43 !important;
+  opacity: 1 !important;
+  width: 35px !important;
+  border-radius: 5px !important;
+}
