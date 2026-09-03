@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { Quote, ArrowRight } from 'lucide-react';
 
 export default function PengertianSection() {
@@ -75,28 +74,15 @@ export default function PengertianSection() {
             {/* Aksen Kotak Dekoratif di Belakang Foto */}
             <div className="absolute -top-6 -right-6 w-3/4 h-full bg-[#5C7A5A]/10 rounded-t-[12rem] rounded-b-3xl -z-10 hidden md:block"></div>
 
-            {/*
-              ⚠️ GANTI "NAMA_FOTO_ASLI.jpg" di bawah dengan nama file yang
-              benar-benar ada di folder public/images/, contoh:
-                - lukisan-gua.jpg
-                - neolitikum.jpg
-                - paleolitikum.jpg
-                - mesolitikum.jpg
-                - menhir.jpg
-                - nekara.jpg
-                - kapak-genggam.jpg
-                - perundagian.jpg
-            */}
-            <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/NAMA_FOTO_ASLI.jpg"
-                alt="Zaman Pra-Aksara"
-                fill
-                className="object-cover"
-              />
-              {/* Overlay gradient tipis untuk menjaga kontras teks */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A18]/30 via-transparent to-transparent" />
-            </div>
+            {/* ⚠️ Ganti "ilustrasi.jpg" dengan nama file yang ada di public/images/
+                 Pilihan: lukisan-gua.jpg | neolitikum.jpg | paleolitikum.jpg
+                          mesolitikum.jpg | menhir.jpg | nekara.jpg
+                          kapak-genggam.jpg | perundagian.jpg */}
+            <img
+              src="/images/ilustrasi.jpg"
+              alt="Zaman Pra-Aksara"
+              className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover rounded-2xl shadow-xl relative z-10"
+            />
 
             {/* Kartu Kutipan Glassmorphism — Overlap di atas foto */}
             <div className="

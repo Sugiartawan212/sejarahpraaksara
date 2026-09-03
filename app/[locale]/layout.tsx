@@ -10,39 +10,39 @@ import Footer from '@/components/layout/Footer';
 
 
 // ─── Konstanta SEO ─────────────────────────────────────────────────────────────
-const BASE_URL = 'https://umahluwung.com'; // TODO: Sesuaikan dengan domain asli nanti
-const SITE_NAME = 'Umah Luwung Interior';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`; // Pastikan menyiapkan gambar og-image.jpg di folder public
+const BASE_URL = 'https://sejarahpraaksara.vercel.app'; // TODO: Sesuaikan dengan domain asli nanti
+const SITE_NAME = 'Sejarah Pra-Aksara';
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 // ─── Teks per-locale ───────────────────────────────────────────────────────────
 const LOCALE_META: Record<string, { title: string; description: string; keywords: string[] }> = {
   en: {
-    title: 'Umah Luwung | Premium Interior Design in Singaraja, Bali',
+    title: 'Prehistoric Era | Group Presentation',
     description:
-      'Transforming visionary concepts into awe-inspiring realities. Umah Luwung is a premier interior design studio in Singaraja, North Bali, specializing in custom furniture, kitchen sets, and full residential refurbishments.',
+      'An interactive presentation website about the prehistoric era, its stages of civilization, and archaeological artifacts left behind by early humans.',
     keywords: [
-      'interior design bali', 'singaraja interior', 'custom furniture bali', 'premium interior designer',
-      'kitchen set singaraja', 'bali residential design', 'umah luwung',
-      'bali architecture', 'interior contractor bali', 'luxury home bali',
+      'prehistoric era', 'pre-literacy age', 'paleolithic', 'mesolithic', 'neolithic',
+      'bronze age indonesia', 'prehistoric artifacts', 'history presentation',
+      'early humans indonesia', 'ancient civilization',
     ],
   },
   id: {
-    title: 'Umah Luwung | Desain Interior Premium di Singaraja, Bali',
+    title: 'Sejarah Pra-Aksara | Presentasi Kelompok',
     description:
-      'Mengubah visi menjadi ruang nyata yang memukau. Umah Luwung adalah studio desain interior terpercaya di Singaraja, spesialis custom furniture, kitchen set, dan renovasi hunian eksklusif sejak 2003.',
+      'Website presentasi interaktif mengenai sejarah masa pra-aksara, tingkatan zaman, dan artefak peninggalan.',
     keywords: [
-      'desain interior bali', 'interior singaraja', 'custom furniture bali', 'jasa interior premium',
-      'kitchen set singaraja', 'renovasi rumah bali', 'umah luwung',
-      'kontraktor interior bali', 'desain ruang tamu', 'desain kamar tidur',
+      'sejarah pra-aksara', 'zaman praaksara', 'paleolitikum', 'mesolitikum', 'neolitikum',
+      'perundagian', 'artefak prasejarah', 'presentasi sejarah', 'manusia purba indonesia',
+      'peradaban awal indonesia', 'zaman batu', 'zaman logam',
     ],
   },
   ru: {
-    title: 'Umah Luwung | Премиальный дизайн интерьера на Бали',
+    title: 'Доисторическая эпоха | Групповая презентация',
     description:
-      'Превращаем концепции в потрясающую реальность. Umah Luwung — ведущая студия дизайна интерьера в Сингарадже, Бали, специализирующаяся на мебели на заказ и элитном ремонте жилых помещений.',
+      'Интерактивный сайт-презентация об истории доисторической эпохи, этапах цивилизации и археологических артефактах.',
     keywords: [
-      'дизайн интерьера бали', 'мебель на заказ бали', 'премиальный интерьер бали', 'ремонт вилл бали',
-      'umah luwung', 'интерьер сингараджа', 'архитектура бали',
+      'доисторическая эпоха', 'палеолит', 'мезолит', 'неолит', 'бронзовый век',
+      'доисторические артефакты', 'история индонезии', 'древний человек',
     ],
   },
 };
@@ -102,7 +102,7 @@ export async function generateMetadata({
           url: DEFAULT_OG_IMAGE,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — Builders of Extraordinary Spaces`,
+          alt: `${SITE_NAME} — Presentasi Interaktif Sejarah Pra-Aksara`,
         },
       ],
     },
@@ -110,8 +110,6 @@ export async function generateMetadata({
     // ── Twitter / X Cards ───────────────────────────────────────────────────
     twitter: {
       card: 'summary_large_image',
-      site: '@UmahLuwung', // TODO: Ganti jika ada Twitter resmi
-      creator: '@UmahLuwung',
       title: meta.title,
       description: meta.description,
       images: [DEFAULT_OG_IMAGE],
@@ -119,46 +117,15 @@ export async function generateMetadata({
   };
 }
 
-// ─── JSON-LD: HomeAndConstructionBusiness Schema ──────────────────────────────
-const interiorDesignSchema = {
+// ─── JSON-LD: EducationalPresentation Schema ──────────────────────────────────
+const presentationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
+  '@type': 'WebSite',
   name: SITE_NAME,
   description:
-    'Umah Luwung is a premier interior design studio dedicated to transforming visionary concepts into awe-inspiring realities. Specializing in custom furniture, kitchen sets, and residential refurbishments in Singaraja, Bali.',
+    'Website presentasi interaktif mengenai sejarah masa pra-aksara, tingkatan zaman, dan artefak peninggalan manusia purba di Indonesia.',
   url: BASE_URL,
-  logo: `${BASE_URL}/logo.png`,
-  image: DEFAULT_OG_IMAGE,
-  telephone: '+6281353555535', // Menggunakan nomor Kak Sri/Admin Umah Luwung
-  email: 'info@umahluwung.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Jl. Pantai Penimbangan Gg. Balbo No.1A, Baktiseraga',
-    addressLocality: 'Singaraja, Buleleng, Bali',
-    postalCode: '81119',
-    addressCountry: 'ID',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -8.112, // Koordinat Singaraja (Sesuaikan presisi jika punya data Maps persis)
-    longitude: 115.088,
-  },
-  areaServed: {
-    '@type': 'City',
-    name: 'Singaraja',
-  },
-  sameAs: [
-    'https://www.instagram.com/umahluwungsingaraja',
-    'https://www.facebook.com/Umah-Luwung-interior-modern-di-singaraja',
-  ],
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: [
-      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-    ],
-    opens: '08:00',
-    closes: '17:00',
-  },
+  inLanguage: 'id',
 };
 
 // ─── Layout Component ──────────────────────────────────────────────────────────
@@ -180,10 +147,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
-        {/* JSON-LD: Interior Design Schema — diinjeksi di semua halaman */}
+        {/* JSON-LD: Presentation Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(interiorDesignSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(presentationSchema) }}
         />
       </head>
       {/* Background utama diset ke warna gelap (Dark Charcoal) agar transisi halaman terasa eksklusif */}
