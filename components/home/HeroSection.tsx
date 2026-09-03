@@ -30,7 +30,8 @@ export default function HeroSection() {
         <motion.div
           className="absolute inset-[-8%] bg-cover bg-center"
           style={{
-            backgroundImage: "url('/hero-interior.png')",
+            // Gambar default diganti dengan pemandangan alam/gua purba
+            backgroundImage: "url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop')",
           }}
           initial={{ scale: 1.0 }}
           animate={{ scale: 1.12 }}
@@ -44,7 +45,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* ── Overlay Gradient ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-10" />
 
       {/* ── Noise Texture Overlay ── */}
       <div
@@ -70,7 +71,7 @@ export default function HeroSection() {
           "
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          Umah Luwung · Interior Design Studio
+          Sejarah Indonesia · Materi Kelas X
         </motion.p>
 
         {/* Headline */}
@@ -86,12 +87,12 @@ export default function HeroSection() {
           "
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
         >
-          Builders of{' '}
+          Ketika Dunia <br />
+          Belum{' '}
           <em className="italic font-normal text-neutral-200">
-            Extraordinary
-          </em>
-          <br />
-          <span className="font-semibold">Spaces</span>
+            Punya
+          </em>{' '}
+          <span className="font-semibold">Tulisan</span>
         </motion.h1>
 
         {/* Divider line */}
@@ -109,10 +110,10 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="flex items-center gap-4 flex-wrap justify-center"
         >
-          {/* Primary CTA: Hubungi Kami */}
+          {/* Primary CTA: Mulai Jelajahi */}
           <Link
-            id="cta-hubungi"
-            href="/kontak"
+            id="cta-mulai"
+            href="#pengertian"
             className="
               group relative inline-flex items-center gap-2
               px-8 py-3 rounded-full
@@ -121,16 +122,16 @@ export default function HeroSection() {
               transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20
             "
           >
-            Hubungi Kami
+            Mulai Jelajahi
             <span className="
               inline-block transition-transform duration-300 group-hover:translate-x-0.5
             ">→</span>
           </Link>
 
-          {/* Secondary CTA: Lihat Project */}
+          {/* Secondary CTA: Lihat Timeline */}
           <Link
-            id="cta-lihat-project"
-            href="/projects"
+            id="cta-timeline"
+            href="#timeline"
             className="
               inline-flex items-center gap-2
               px-8 py-3 rounded-full
@@ -140,7 +141,7 @@ export default function HeroSection() {
               backdrop-blur-sm
             "
           >
-            Lihat Project
+            Lihat Timeline
           </Link>
         </motion.div>
       </div>

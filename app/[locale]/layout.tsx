@@ -7,8 +7,7 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import FloatingWidget from '@/components/home/FloatingWidget';
-import LanguageWidget from '@/components/home/LanguageWidget';
+
 
 // ─── Konstanta SEO ─────────────────────────────────────────────────────────────
 const BASE_URL = 'https://umahluwung.com'; // TODO: Sesuaikan dengan domain asli nanti
@@ -195,8 +194,7 @@ export default async function LocaleLayout({
             {children}
           </main>
           <Footer />
-          <FloatingWidget /> {/* Widget chat Umah Luwung yang keren siap tampil */}
-          <LanguageWidget />
+
         </NextIntlClientProvider>
       </body>
     </html>
