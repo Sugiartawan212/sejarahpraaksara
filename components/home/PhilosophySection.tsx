@@ -12,10 +12,10 @@ export default function PengertianSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-          {/* Kolom Kiri: Tipografi Utama & Pengertian */}
-          <div className="lg:col-span-6 space-y-10">
+          {/* ── Kolom Kiri: Tipografi Utama & Pengertian ── */}
+          <div className="space-y-10">
             <div>
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-px w-12 bg-[#5C7A5A]"></div>
@@ -69,33 +69,46 @@ export default function PengertianSection() {
             </div>
           </div>
 
-          {/* Kolom Kanan: Foto Editorial & Kutipan Melayang */}
-          <div className="lg:col-span-6 relative mt-12 lg:mt-0">
-            {/* Aksen Kotak Hijau Sage di Belakang Foto */}
+          {/* ── Kolom Kanan: Foto Ilustrasi Utama & Kutipan Overlap ── */}
+          <div className="relative mt-12 lg:mt-0">
+
+            {/* Aksen Kotak Dekoratif di Belakang Foto */}
             <div className="absolute -top-6 -right-6 w-3/4 h-full bg-[#5C7A5A]/10 rounded-t-[12rem] rounded-b-3xl -z-10 hidden md:block"></div>
 
-            {/* Foto Utama dengan bentuk Arch */}
-            <div className="relative h-[500px] md:h-[700px] w-full rounded-t-[12rem] rounded-b-3xl overflow-hidden shadow-2xl">
+            {/* Foto Utama — ganti NAMA_FILE_FOTO_LO dengan nama file foto kamu */}
+            <div className="relative h-[460px] sm:h-[560px] lg:h-[620px] w-full rounded-t-[10rem] rounded-b-3xl overflow-hidden shadow-2xl border-4 border-white/30">
               <Image
-                // Ganti dengan foto fosil/lukisan gua. Ini placeholder Unsplash
-                src="https://images.unsplash.com/photo-1544626154-159675200230?q=80&w=1974&auto=format&fit=crop"
-                alt="Peninggalan Arkeologis"
+                src="/images/NAMA_FILE_FOTO_LO.jpg"
+                alt="Ilustrasi Zaman Pra-Aksara"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-[2s]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              {/* Overlay gradient tipis untuk menjaga kontras teks */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A18]/30 via-transparent to-transparent" />
             </div>
 
-            {/* Kartu Kutipan Glassmorphism */}
-            <div className="absolute -bottom-10 md:bottom-12 -left-4 md:-left-16 w-[90%] md:w-[85%] bg-[#E2DECA]/90 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-xl border border-white/40">
-              <Quote className="w-10 h-10 text-[#5C7A5A] mb-4 opacity-50" strokeWidth={1.5} />
-              <p className="text-[#2A2A27] font-serif text-xl md:text-2xl italic leading-snug">
-                "Bukan sekadar masa sebelum ada tulisan. Ini adalah era evolusi luar biasa dalam cara hidup, teknologi, dan ekonomi manusia."
+            {/* Kartu Kutipan Glassmorphism — Overlap di atas foto */}
+            <div className="
+              absolute -bottom-10 md:bottom-8
+              -left-4 md:-left-12
+              w-[92%] md:w-[88%]
+              bg-[#E2DECA]/90 backdrop-blur-md
+              p-7 md:p-9
+              rounded-3xl
+              shadow-2xl
+              border border-white/50
+            ">
+              <Quote className="w-9 h-9 text-[#5C7A5A] mb-3 opacity-50" strokeWidth={1.5} />
+              <p className="text-[#2A2A27] font-serif text-lg md:text-xl italic leading-snug">
+                &ldquo;Bukan sekadar masa sebelum ada tulisan. Ini adalah era evolusi luar biasa dalam cara hidup, teknologi, dan ekonomi manusia.&rdquo;
               </p>
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-5 flex items-center gap-4">
                 <div className="w-10 h-px bg-[#5C7A5A]"></div>
                 <span className="text-[#5C7A5A] text-xs tracking-[0.2em] uppercase font-bold">Inti Pembelajaran</span>
               </div>
             </div>
+
           </div>
 
         </div>
