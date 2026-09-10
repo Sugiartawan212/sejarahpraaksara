@@ -5,6 +5,7 @@ import ProcessSection from '@/components/home/ProcessSection';
 import ServicessSection from '@/components/home/ServicesSection';
 import GalleryPreview from '@/components/home/GalleryPreview';
 import TestimonialSection from '@/components/home/QuizSection';
+import FunFactSection from '@/components/home/FunFactSection';
 
 export default async function Home({
   params,
@@ -23,6 +24,7 @@ export default async function Home({
       <ServicessSection />
       <GalleryPreview />
       <TestimonialSection />
+      <FunFactSection />
     </div>
   );
 }
