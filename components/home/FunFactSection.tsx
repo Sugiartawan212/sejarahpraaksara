@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 // ─── DATA KONTEN CARDS ────────────────────────────────────────────────────────
 const funFacts = [
@@ -30,27 +30,6 @@ const funFacts = [
   },
 ];
 
-// ─── VARIANTS ANIMASI ─────────────────────────────────────────────────────────
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-};
-
 // ─── KOMPONEN CARD ────────────────────────────────────────────────────────────
 function FunFactCard({
   imageSrc,
@@ -67,9 +46,11 @@ function FunFactCard({
 }) {
   return (
     <motion.div
-      variants={cardVariants}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       whileHover={{ y: -6, scale: 1.02 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="flex flex-col bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/80 hover:shadow-2xl hover:border-blue-200 transition-shadow duration-300"
     >
       {/* Gambar */}
@@ -136,17 +117,11 @@ export default function FunFactSection() {
       </motion.div>
 
       {/* Grid 3 Kolom */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {funFacts.map((fact, index) => (
           <FunFactCard key={index} {...fact} />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

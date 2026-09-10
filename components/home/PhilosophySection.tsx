@@ -79,11 +79,10 @@ export default function PengertianSection() {
                           mesolitikum.jpg | menhir.jpg | nekara.jpg
                           kapak-genggam.jpg | perundagian.jpg */}
             <img
-              src="/images/ilustrasi.jpg"
+              src="/images/paleolitikum.jpg"
               alt="Zaman Pra-Aksara"
-              className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover rounded-2xl shadow-xl relative z-10"
+              className="w-full h-[320px] md:h-[420px] object-cover rounded-2xl shadow-lg relative z-10"
             />
-
             {/* Kartu Kutipan Glassmorphism — Overlap di atas foto */}
             <div className="
               absolute -bottom-10 md:bottom-8
