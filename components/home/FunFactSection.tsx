@@ -85,7 +85,7 @@ export default function FunFactSection() {
   return (
     <section
       id="funfact"
-      className="w-full py-20 px-4 md:px-12 xl:px-20 bg-gradient-to-br from-sky-200 via-blue-100 to-cyan-200"
+      className="w-full py-20 px-4 md:px-12 xl:px-20"
     >
       {/* Header */}
       <motion.div

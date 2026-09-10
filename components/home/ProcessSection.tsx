@@ -102,7 +102,7 @@ export default function TimelineSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="timeline" className="bg-[#EEEBE4] py-24 md:py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="timeline" className="py-24 md:py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── HEADER SECTION ── */}
@@ -169,7 +169,7 @@ export default function TimelineSection() {
                 >
 
                   {/* 1. Badge Angka di Tengah */}
-                  <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-[#EEEBE4] border-4 border-[#2A2A27] md:-translate-x-1/2 flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-white/90 border-4 border-[#2A2A27] md:-translate-x-1/2 flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-transform duration-500">
                     <span className="text-[#2A2A27] font-bold font-serif text-xl">{item.id}</span>
                   </div>
 

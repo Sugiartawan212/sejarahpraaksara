@@ -151,7 +151,7 @@ export default function QuizSection() {
     };
 
     return (
-        <section id="quiz" className="bg-[#EEEBE4] py-24 md:py-32 relative overflow-hidden" ref={ref}>
+        <section id="quiz" className="py-24 md:py-32 relative overflow-hidden" ref={ref}>
             <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
 
                 {/* Header Kuis (Mirip Header Testimoni) */}

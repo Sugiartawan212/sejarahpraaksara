@@ -72,7 +72,7 @@ const galleryData = [
 // ── Komponen Utama (Sepenuhnya Statis) ────────────────────────────────────────
 export default function GallerySection() {
   return (
-    <section id="galeri" className="bg-[#EEEBE4] py-24 md:py-32 relative">
+    <section id="galeri" className="py-24 md:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Header Section */}

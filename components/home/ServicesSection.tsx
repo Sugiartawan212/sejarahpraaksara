@@ -104,7 +104,7 @@ export default function MediaSection() {
   const [activeMedia, setActiveMedia] = useState('video');
 
   return (
-    <section id="media" className="w-full mx-auto px-4 md:px-12 xl:px-20 py-24 bg-[#EEEBE4] flex flex-col items-center">
+    <section id="media" className="w-full mx-auto px-4 md:px-12 xl:px-20 py-24 flex flex-col items-center">
 
       {/* Tipografi Judul (Opsional, ditaruh di luar tablet) */}
       <div className="text-center mb-12">

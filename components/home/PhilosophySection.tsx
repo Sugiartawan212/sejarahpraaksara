@@ -3,7 +3,7 @@ import { Quote, ArrowRight } from 'lucide-react';
 
 export default function PengertianSection() {
   return (
-    <section id="pengertian" className="bg-[#EEEBE4] py-24 md:py-32 relative overflow-hidden">
+    <section id="pengertian" className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
 
       {/* Teks Watermark Raksasa di Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14vw] font-serif font-bold text-[#2A2A27] opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
@@ -81,18 +81,19 @@ export default function PengertianSection() {
             <img
               src="/images/paleolitikum.jpg"
               alt="Zaman Pra-Aksara"
-              className="w-full h-[320px] md:h-[420px] object-cover rounded-2xl shadow-lg relative z-10"
+              className="w-full h-[320px] md:h-[420px] object-cover rounded-2xl shadow-lg relative z-10 block"
             />
             {/* Kartu Kutipan Glassmorphism — Overlap di atas foto */}
             <div className="
               absolute -bottom-10 md:bottom-8
               -left-4 md:-left-12
               w-[92%] md:w-[88%]
-              bg-[#E2DECA]/90 backdrop-blur-md
+              bg-[#FDFBF7]
               p-7 md:p-9
               rounded-3xl
               shadow-2xl
-              border border-white/50
+              border border-[#2A2A27]/8
+              z-20 relative
             ">
               <Quote className="w-9 h-9 text-[#5C7A5A] mb-3 opacity-50" strokeWidth={1.5} />
               <p className="text-[#2A2A27] font-serif text-lg md:text-xl italic leading-snug">

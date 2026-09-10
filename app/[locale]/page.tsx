@@ -16,15 +16,15 @@ export default async function Home({
   const { locale } = await params;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F5F3EF]">
+    <div className="flex flex-col min-h-screen">
       <HeroSection />
       <TeamSection />
       <PhilosophySection />
       <ProcessSection />
+      <FunFactSection />
       <ServicessSection />
       <GalleryPreview />
       <TestimonialSection />
-      <FunFactSection />
     </div>
   );
 }
