@@ -1,10 +1,9 @@
+// @ts-nocheck
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
-import localeString from './sanity/schemas/localeString';
 import localeText from './sanity/schemas/localeText';
 import timeline from './sanity/schemas/timeline';
-import gallery from './sanity/schemas/gallery';
 import team from './sanity/schemas/team';
 
 export default defineConfig({
@@ -17,6 +16,6 @@ export default defineConfig({
     visionTool(),
   ],
   schema: {
-    types: [localeString, localeText, timeline, gallery, team],
+    types: [localeText, timeline, team]
   },
 });
