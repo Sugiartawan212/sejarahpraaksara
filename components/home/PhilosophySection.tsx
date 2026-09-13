@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Quote, ArrowRight } from 'lucide-react';
 
 export default function PengertianSection() {
@@ -69,7 +72,13 @@ export default function PengertianSection() {
           </div>
 
           {/* ── Kolom Kanan: Foto Ilustrasi Utama & Kutipan Overlap ── */}
-          <div className="relative mt-12 lg:mt-0">
+          <motion.div
+            className="relative mt-16 lg:mt-24"
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
 
             {/* Aksen Kotak Dekoratif di Belakang Foto */}
             <div className="absolute -top-6 -right-6 w-3/4 h-full bg-[#5C7A5A]/10 rounded-t-[12rem] rounded-b-3xl -z-10 hidden md:block"></div>
@@ -105,7 +114,7 @@ export default function PengertianSection() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>

@@ -13,7 +13,7 @@ const funFacts = [
       'Manusia purba pada zaman Mesolitikum meninggalkan tumpukan kulit kerang dan siput yang sangat tinggi. Tumpukan ini disebut Kjokkenmoddinger, berasal dari bahasa Denmark yang berarti "sampah dapur". Temuan ini menjadi bukti penting bahwa mereka hidup menetap di dekat pantai dan mengandalkan laut sebagai sumber makanan utama.',
   },
   {
-    imageSrc: '/images/oranggua.jpg',
+    imageSrc: '/images/gua.jpg',
     imageAlt: 'Lukisan Gua',
     emoji: '🖐️',
     title: 'Seniman Gua Kuno',
@@ -21,7 +21,7 @@ const funFacts = [
       'Lukisan cap tangan tertua di dunia yang dibuat pada masa praaksara ditemukan di Gua Leang-Leang, Sulawesi Selatan. Gambar-gambar yang berusia lebih dari 40.000 tahun ini menunjukkan bahwa manusia purba di Nusantara sudah memiliki kemampuan berekspresi seni yang luar biasa, jauh sebelum peradaban besar lainnya berkembang.',
   },
   {
-    imageSrc: '/images/gua.jpg',
+    imageSrc: '/images/oranggua.jpg',
     imageAlt: 'Abris Sous Roches',
     emoji: '🏕️',
     title: 'Gua sebagai Rumah (Abris Sous Roches)',

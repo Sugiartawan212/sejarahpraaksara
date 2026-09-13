@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { client } from '@/lib/sanity';
 
 // ── Tipe Data ──────────────────────────────────────────────────────────────────
@@ -61,9 +62,6 @@ const TIMELINE_QUERY = `*[_type == "timeline"] | order(id asc) {
 
 // ── Komponen Utama ─────────────────────────────────────────────────────────────
 export default function TimelineSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
   const [timelineData, setTimelineData] = useState<TimelineItem[]>(fallbackTimelineData);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -85,30 +83,17 @@ export default function TimelineSection() {
     fetchTimeline();
   }, []);
 
-  // Intersection Observer untuk memicu animasi saat di-scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="timeline" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="timeline" className="py-24 md:py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── HEADER SECTION ── */}
-        <div
-          className={`text-center max-w-3xl mx-auto mb-24 transition-all duration-1000 ease-out transform
-            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <span className="text-[#5C7A5A] font-bold tracking-[0.2em] text-sm uppercase mb-4 block">
             Evolusi Peradaban
@@ -120,17 +105,20 @@ export default function TimelineSection() {
           <p className="text-[#2A2A27]/90 text-lg font-medium leading-relaxed max-w-2xl mx-auto">
             Perjalanan panjang manusia purba dari sekadar bertahan hidup nomaden hingga mampu menciptakan teknologi pengolahan logam.
           </p>
-        </div>
+        </motion.div>
 
         {/* ── ZIGZAG TIMELINE CONTAINER ── */}
         <div className="relative">
 
           {/* Garis Vertikal Tengah (Gradient Elegan) */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[3px] md:-translate-x-1/2 rounded-full z-0 overflow-hidden bg-gray-200">
-            <div
-              className={`absolute top-0 left-0 w-full bg-gradient-to-b from-[#D4AF37] via-[#D05B43] to-[#5C7A5A] shadow-[0_0_15px_rgba(212,175,55,0.6)] transition-all duration-[2.5s] ease-in-out delay-300
-                ${isVisible ? 'h-full' : 'h-0'}`}
-            ></div>
+            <motion.div
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#D4AF37] via-[#D05B43] to-[#5C7A5A] shadow-[0_0_15px_rgba(212,175,55,0.6)]"
+              initial={{ height: 0 }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 1, ease: 'easeInOut' }}
+            />
           </div>
 
           {/* Skeleton Loading */}
@@ -158,14 +146,18 @@ export default function TimelineSection() {
             /* Mapping Data Tingkatan */
             timelineData.map((item, index) => {
               const isEven = index % 2 === 0;
+              // Konten kiri (isEven) slide dari kiri, konten kanan slide dari kanan
+              const xFrom = isEven ? -80 : 80;
 
               return (
-                <div
+                <motion.div
                   key={item._id}
-                  style={{ transitionDelay: `${(index * 200) + 500}ms` }}
-                  className={`relative flex flex-col md:flex-row items-center justify-between mb-20 md:mb-32 transition-all duration-1000 ease-out transform
-                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+                  className={`relative flex flex-col md:flex-row items-center justify-between mb-20 md:mb-32
                     ${isEven ? '' : 'md:flex-row-reverse'}`}
+                  initial={{ opacity: 0, x: xFrom }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.7, delay: index * 0.15, ease: 'easeOut' }}
                 >
 
                   {/* 1. Badge Angka di Tengah */}
@@ -210,7 +202,7 @@ export default function TimelineSection() {
                     </div>
                   </div>
 
-                </div>
+                </motion.div>
               );
             })
           )}

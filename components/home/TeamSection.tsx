@@ -10,36 +10,50 @@ import TeamCarousel from './TeamCarousel';
 const STATIC_MEMBERS: TeamMember[] = [
   {
     _id: 'static-1',
-    name: 'Andi Pratama',
-    role: 'Speaker Utama',
-    desc: 'Bertugas membawakan presentasi dan menjelaskan materi secara interaktif kepada audiens.',
+    name: 'Putu Adelia',
+    role: 'Anggota Tim',
+    desc: 'Berkontribusi dalam penyusunan materi dan penyajian konten sejarah praaksara yang informatif.',
     color: '#D05B43',
   },
   {
     _id: 'static-2',
-    name: 'Sugiartawan',
-    role: 'UI/UX & Web Dev',
-    desc: 'Merancang dan membangun website presentasi interaktif ini dari nol dengan animasi memukau.',
+    name: 'Luh Putu Sarbella',
+    role: 'Anggota Tim',
+    desc: 'Membantu riset dan pengorganisasian data sejarah agar mudah dipahami oleh audiens.',
     color: '#5C7A5A',
   },
   {
     _id: 'static-3',
-    name: 'Budi Wijaya',
-    role: 'Riset Materi & Kuis',
-    desc: 'Mengumpulkan data sejarah pra-aksara yang akurat dan menyusun pertanyaan kuis yang menantang.',
+    name: 'Luh Putu Laksmi',
+    role: 'Anggota Tim',
+    desc: 'Berperan dalam penyusunan narasi dan pengeditan konten presentasi sejarah praaksara.',
     color: '#D4AF37',
+  },
+  {
+    _id: 'static-4',
+    name: 'Gede Satya',
+    role: 'Anggota Tim',
+    desc: 'Mendukung pengembangan materi dan memastikan keakuratan fakta-fakta sejarah yang disajikan.',
+    color: '#4A7CA8',
+  },
+  {
+    _id: 'static-5',
+    name: 'Putu Sukmawardani',
+    role: 'Anggota Tim',
+    desc: 'Berkontribusi dalam perancangan alur presentasi dan kelengkapan bahan ajar kelompok.',
+    color: '#9B59B6',
+  },
+  {
+    _id: 'static-6',
+    name: 'Sabrika',
+    role: 'Anggota Tim',
+    desc: 'Membantu koordinasi tim dan penyusunan konten agar presentasi berjalan lancar dan menarik.',
+    color: '#E67E22',
   },
 ];
 
 // ── GROQ Query ─────────────────────────────────────────────────────────────────
-const TEAM_QUERY = `*[_type == "team"] | order(urutan asc) {
-  _id,
-  "name": nama,
-  "role": peran.id,
-  "desc": bio.id,
-  color,
-  "imageUrl": foto.asset->url
-}`;
+const TEAM_QUERY = `*[_type == "team"]`;
 
 // ── Fetch dengan Fallback Kebal Error ─────────────────────────────────────────
 async function getTeamMembers(): Promise<TeamMember[]> {

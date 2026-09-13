@@ -6,8 +6,12 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { TeamMember } from '@/types/team';
 
 // ── Helper: Inisial 2 Huruf ────────────────────────────────────────────────────
-function getInitials(name: string): string {
-  const parts = name.trim().split(/\s+/);
+function getInitials(name?: string | null): string {
+  // Guard: jika name undefined/null/string kosong → kembalikan placeholder
+  if (!name) return '??';
+  const cleanName = name.trim();
+  if (!cleanName) return '??';
+  const parts = cleanName.split(/\s+/);
   if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
   return (parts[0][0] + parts[1][0]).toUpperCase();
 }
@@ -27,7 +31,7 @@ function MemberCard({ member }: { member: TeamMember }) {
         {member.imageUrl ? (
           <img
             src={member.imageUrl}
-            alt={member.name}
+            alt={member.name ?? 'Foto anggota'}
             className="relative w-full h-full object-cover rounded-full border border-gray-100 shadow-md grayscale group-hover:grayscale-0 transition-all duration-500"
           />
         ) : (
@@ -35,7 +39,7 @@ function MemberCard({ member }: { member: TeamMember }) {
             className="relative w-full h-full rounded-full border border-gray-100 shadow-md flex items-center justify-center text-white font-serif font-bold text-3xl md:text-4xl select-none grayscale group-hover:grayscale-0 transition-all duration-500"
             style={{ backgroundColor: accent }}
           >
-            {getInitials(member.name)}
+            {getInitials(member.name ?? undefined)}
           </div>
         )}
       </div>
@@ -52,7 +56,7 @@ function MemberCard({ member }: { member: TeamMember }) {
 
       {/* Nama & Deskripsi */}
       <h3 className="text-2xl font-serif font-bold text-[#2A2A27] mb-3">
-        {member.name}
+        {member.name ?? 'Unknown'}
       </h3>
       {member.desc && (
         <p className="text-[#2A2A27]/70 text-sm leading-relaxed font-medium">
