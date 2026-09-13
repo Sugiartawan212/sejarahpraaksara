@@ -5,8 +5,8 @@
 export interface TeamMember {
   _id: string;
   name: string;
-  role: string;
-  desc: string;
-  color: string;
-  imageUrl?: string;
+  role?: string;       // opsional — fallback ke 'Anggota Tim' di UI
+  desc?: string;       // opsional — deskripsi dari Sanity (field: description)
+  color?: string;      // hanya untuk data statis / fallback
+  imageUrl?: string;   // hasil proyeksi GROQ: image.asset->url
 }

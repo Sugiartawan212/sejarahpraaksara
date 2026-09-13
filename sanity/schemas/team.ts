@@ -2,7 +2,7 @@ import { defineType, defineField } from 'sanity';
 
 /**
  * team — Schema untuk data anggota tim / pembuat konten presentasi.
- * Menyimpan informasi profil dengan dukungan multi-bahasa.
+ * Field diselaraskan dengan GROQ query di TeamSection.tsx.
  */
 const team = defineType({
   name: 'team',
@@ -10,53 +10,51 @@ const team = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'nama',
+      name: 'name',
       title: 'Nama Lengkap',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'peran',
-      title: 'Peran / Jabatan',
-      type: 'localeText',
-      description: 'Peran dalam tim (multi-bahasa)',
+      name: 'role',
+      title: 'Peran / Tugas',
+      type: 'string',
+      description: 'Contoh: Speaker, UI/UX, Researcher, Editor',
     }),
     defineField({
-      name: 'bio',
-      title: 'Bio Singkat',
-      type: 'localeText',
-      description: 'Deskripsi singkat anggota tim (multi-bahasa)',
-    }),
-    defineField({
-      name: 'foto',
+      name: 'image',
       title: 'Foto Profil',
       type: 'image',
       options: { hotspot: true },
     }),
     defineField({
-      name: 'urutan',
-      title: 'Urutan Tampil',
-      type: 'number',
-      description: 'Angka kecil tampil lebih awal',
+      name: 'description',
+      title: 'Deskripsi Singkat Tugas',
+      type: 'text',
+      rows: 3,
+      description: 'Penjelasan singkat mengenai peran anggota dalam tim.',
     }),
     defineField({
-      name: 'sosialMedia',
-      title: 'Sosial Media',
-      type: 'object',
-      fields: [
-        { name: 'instagram', title: 'Instagram', type: 'url' },
-        { name: 'linkedin', title: 'LinkedIn', type: 'url' },
-        { name: 'github', title: 'GitHub', type: 'url' },
-      ],
+      name: 'order',
+      title: 'Urutan Tampil',
+      type: 'number',
+      description: 'Angka kecil tampil lebih awal (misal: 1, 2, 3 …)',
     }),
   ],
   orderings: [
     {
       title: 'Urutan Tampil',
-      name: 'urutanAsc',
-      by: [{ field: 'urutan', direction: 'asc' }],
+      name: 'orderAsc',
+      by: [{ field: 'order', direction: 'asc' }],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'role',
+      media: 'image',
+    },
+  },
 });
 
 export default team;

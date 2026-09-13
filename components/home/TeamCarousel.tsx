@@ -19,6 +19,10 @@ function getInitials(name?: string | null): string {
 // ── Komponen Kartu ─────────────────────────────────────────────────────────────
 function MemberCard({ member }: { member: TeamMember }) {
   const accent = member.color || '#5C7A5A';
+
+  // Fallback role jika field kosong atau tidak ada
+  const displayRole = member.role?.trim() || 'Anggota Tim';
+
   return (
     <div className="group relative h-full bg-white/80 border border-[#2A2A27]/5 p-8 md:p-10 rounded-[2rem] flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 transform">
 
@@ -28,6 +32,7 @@ function MemberCard({ member }: { member: TeamMember }) {
           className="absolute inset-0 rounded-full blur-md opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500"
           style={{ backgroundColor: accent }}
         />
+        {/* Kondisional: tampilkan gambar jika imageUrl tersedia, inisial jika tidak */}
         {member.imageUrl ? (
           <img
             src={member.imageUrl}
@@ -44,20 +49,20 @@ function MemberCard({ member }: { member: TeamMember }) {
         )}
       </div>
 
-      {/* Badge Role */}
-      {member.role && (
-        <div
-          className="px-5 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase text-white mb-5 shadow-sm"
-          style={{ backgroundColor: accent }}
-        >
-          {member.role}
-        </div>
-      )}
+      {/* Badge Role — selalu tampil dengan fallback 'Anggota Tim' */}
+      <div
+        className="px-5 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase text-white mb-5 shadow-sm"
+        style={{ backgroundColor: accent }}
+      >
+        {displayRole}
+      </div>
 
-      {/* Nama & Deskripsi */}
+      {/* Nama */}
       <h3 className="text-2xl font-serif font-bold text-[#2A2A27] mb-3">
         {member.name ?? 'Unknown'}
       </h3>
+
+      {/* Deskripsi — dari field description Sanity (diprojeksi sebagai desc) */}
       {member.desc && (
         <p className="text-[#2A2A27]/70 text-sm leading-relaxed font-medium">
           {member.desc}
