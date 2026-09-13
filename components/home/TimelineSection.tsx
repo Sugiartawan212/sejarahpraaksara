@@ -1,33 +1,44 @@
 "use client";
 
-// TimelineSection — Client Component agar Framer Motion berjalan normal.
-// Data di-fetch di server (via Server Action pattern), lalu di-pass sebagai props.
-// Fallback statis memastikan UI tidak pernah kosong.
+// TimelineSection — Client Component (Framer Motion memerlukan "use client").
+// Data di-pass dari TimelineSectionWrapper (Async Server Component).
+// Fallback statis memastikan UI tidak pernah kosong meskipun Sanity bermasalah.
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-// ── Tipe Data ──────────────────────────────────────────────────────────────────
+// ── Tipe Data (sesuai field Sanity baru) ──────────────────────────────────────
 export interface TimelineEra {
   _id: string;
-  periode: string;
-  rentangWaktu?: string;
-  deskripsi?: string;
-  ciriUtama?: string[];
+  title: string;
+  timeframe?: string;
+  description?: string;
+  features?: string[];
   imageUrl?: string | null;
-  warna?: string;
   order?: number;
+}
+
+// ── Warna aksen per zaman (dipakai oleh fallback & Sanity jika tidak ada field warna) ──
+const ERA_COLORS: Record<string, string> = {
+  Paleolitikum: '#D05B43',
+  Mesolitikum: '#5C7A5A',
+  Neolitikum: '#D4AF37',
+  Megalitikum: '#4A7CA8',
+};
+
+function getAccentColor(title: string): string {
+  return ERA_COLORS[title] ?? '#6B7280';
 }
 
 // ── Data Fallback Statis ───────────────────────────────────────────────────────
 export const STATIC_TIMELINE: TimelineEra[] = [
   {
     _id: 'era-1',
-    periode: 'Paleolitikum',
-    rentangWaktu: '2.500.000 – 10.000 SM',
-    deskripsi:
+    title: 'Paleolitikum',
+    timeframe: '2.500.000 – 10.000 SM',
+    description:
       'Zaman Batu Tua, periode paling awal kehidupan manusia purba di bumi. Manusia hidup secara nomaden, bergantung sepenuhnya pada alam untuk bertahan hidup dengan cara berburu hewan liar dan mengumpulkan buah-buahan.',
-    ciriUtama: [
+    features: [
       'Hidup berpindah-pindah (nomaden)',
       'Peralatan dari batu yang masih kasar',
       'Berburu & meramu (food gathering)',
@@ -35,16 +46,15 @@ export const STATIC_TIMELINE: TimelineEra[] = [
       'Tinggal di gua-gua alam',
     ],
     imageUrl: null,
-    warna: '#D05B43',
     order: 1,
   },
   {
     _id: 'era-2',
-    periode: 'Mesolitikum',
-    rentangWaktu: '10.000 – 5.000 SM',
-    deskripsi:
+    title: 'Mesolitikum',
+    timeframe: '10.000 – 5.000 SM',
+    description:
       'Zaman Batu Tengah, masa transisi penting di mana manusia mulai meninggalkan gaya hidup nomaden dan beralih ke semi-nomaden. Muncul kebudayaan Kjokkenmoddinger (tumpukan sampah dapur) dan Abris Sous Roche (gua karang sebagai tempat tinggal).',
-    ciriUtama: [
+    features: [
       'Semi-nomaden (mulai menetap sementara)',
       'Peralatan batu lebih halus (flakes)',
       'Mengenal lukisan dinding gua',
@@ -52,16 +62,15 @@ export const STATIC_TIMELINE: TimelineEra[] = [
       'Manusia sudah mengenal seni',
     ],
     imageUrl: null,
-    warna: '#5C7A5A',
     order: 2,
   },
   {
     _id: 'era-3',
-    periode: 'Neolitikum',
-    rentangWaktu: '5.000 – 2.000 SM',
-    deskripsi:
+    title: 'Neolitikum',
+    timeframe: '5.000 – 2.000 SM',
+    description:
       'Zaman Batu Baru, ditandai dengan Revolusi Neolitik yang mengubah cara hidup manusia secara drastis. Manusia mulai menetap, bercocok tanam, beternak, dan membuat peralatan yang lebih halus dan beragam, termasuk gerabah dan kain tenun.',
-    ciriUtama: [
+    features: [
       'Menetap dan membentuk komunitas',
       'Bercocok tanam & beternak (food producing)',
       'Peralatan batu diasah & diperhalus',
@@ -69,16 +78,15 @@ export const STATIC_TIMELINE: TimelineEra[] = [
       'Membuat gerabah dan kain tenun',
     ],
     imageUrl: null,
-    warna: '#D4AF37',
     order: 3,
   },
   {
     _id: 'era-4',
-    periode: 'Megalitikum',
-    rentangWaktu: '2.500 – 500 SM',
-    deskripsi:
+    title: 'Megalitikum',
+    timeframe: '2.500 – 500 SM',
+    description:
       'Zaman Batu Besar, ditandai dengan pembangunan monumen-monumen batu berukuran besar yang memiliki fungsi religi dan sosial. Menhir, dolmen, sarkofagus, dan punden berundak menjadi bukti kompleksitas kepercayaan dan organisasi sosial masyarakat praaksara.',
-    ciriUtama: [
+    features: [
       'Membangun monumen batu besar (menhir, dolmen)',
       'Kepercayaan animisme & dinamisme',
       'Penguburan jenazah yang kompleks',
@@ -86,17 +94,48 @@ export const STATIC_TIMELINE: TimelineEra[] = [
       'Muncul pemimpin / kepala suku',
     ],
     imageUrl: null,
-    warna: '#4A7CA8',
     order: 4,
   },
 ];
 
-// ── Subkomponen: Satu Item Timeline ───────────────────────────────────────────
+// ── Subkomponen: Placeholder Gambar Abu-Abu ────────────────────────────────────
+function ImagePlaceholder({ accent, title }: { accent: string; title: string }) {
+  return (
+    <div
+      className="w-full h-48 flex flex-col items-center justify-center gap-2 select-none"
+      style={{ backgroundColor: `${accent}15` }}
+    >
+      {/* Ikon gambar sederhana */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-10 h-10 opacity-30"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={accent}
+        strokeWidth={1.5}
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 3h18M3 21h18M15 3v18"
+        />
+      </svg>
+      <span className="text-[10px] font-semibold tracking-wider uppercase opacity-40" style={{ color: accent }}>
+        {title}
+      </span>
+    </div>
+  );
+}
+
+// ── Subkomponen: Satu Item Timeline (alternating kiri ↔ kanan) ────────────────
 function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  // Genap → masuk dari kiri; Ganjil → masuk dari kanan
   const isEven = index % 2 === 0;
-  const accent = era.warna || '#5C7A5A';
+  const accent = getAccentColor(era.title);
 
   return (
     <div
@@ -105,7 +144,7 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         isEven ? 'md:flex-row' : 'md:flex-row-reverse'
       }`}
     >
-      {/* Konten Kartu */}
+      {/* ── Kartu Konten ── */}
       <motion.div
         initial={{ opacity: 0, x: isEven ? -60 : 60 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -113,25 +152,28 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         className="w-full md:w-[calc(50%-2.5rem)]"
       >
         <div className="bg-white/90 backdrop-blur-sm rounded-[1.5rem] shadow-lg hover:shadow-2xl border border-[#2A2A27]/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden group">
-          {/* Gambar — hanya tampil jika imageUrl tersedia (dari Sanity) */}
-          {era.imageUrl && (
+
+          {/* Gambar: tampilkan <img> jika imageUrl ada, placeholder abu-abu jika tidak */}
+          {era.imageUrl ? (
             <div className="w-full h-48 overflow-hidden">
               <img
                 src={era.imageUrl}
-                alt={`Ilustrasi ${era.periode}`}
+                alt={`Ilustrasi ${era.title}`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
+          ) : (
+            <ImagePlaceholder accent={accent} title={era.title} />
           )}
 
           <div className="p-6 md:p-8">
             {/* Badge Rentang Waktu */}
-            {era.rentangWaktu && (
+            {era.timeframe && (
               <span
                 className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-white mb-4 shadow-sm"
                 style={{ backgroundColor: accent }}
               >
-                {era.rentangWaktu}
+                {era.timeframe}
               </span>
             )}
 
@@ -140,26 +182,26 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
               className="text-2xl md:text-3xl font-serif font-bold mb-3 tracking-tight"
               style={{ color: accent }}
             >
-              {era.periode}
+              {era.title}
             </h3>
 
             {/* Deskripsi */}
-            {era.deskripsi && (
+            {era.description && (
               <p className="text-[#2A2A27]/70 text-sm leading-relaxed mb-5">
-                {era.deskripsi}
+                {era.description}
               </p>
             )}
 
-            {/* Daftar Ciri Utama */}
-            {era.ciriUtama && era.ciriUtama.length > 0 && (
+            {/* Daftar Ciri / Features */}
+            {era.features && era.features.length > 0 && (
               <ul className="space-y-2">
-                {era.ciriUtama.map((ciri, i) => (
+                {era.features.map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-[#2A2A27]/80">
                     <span
                       className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full"
                       style={{ backgroundColor: accent }}
                     />
-                    {ciri}
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -168,7 +210,7 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         </div>
       </motion.div>
 
-      {/* Titik & Nomor di Garis Tengah */}
+      {/* ── Titik Bernomor di Garis Tengah (hanya tampil md ke atas) ── */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -177,24 +219,26 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         style={{
           backgroundColor: accent,
           borderRadius: '50%',
-          boxShadow: `0 0 0 4px white, 0 0 0 6px ${accent}33`,
+          boxShadow: `0 0 0 4px white, 0 0 0 6px ${accent}40`,
         }}
       >
-        <span className="text-white font-bold text-sm md:text-base">{index + 1}</span>
+        <span className="text-white font-bold text-sm md:text-base select-none">
+          {index + 1}
+        </span>
       </motion.div>
 
-      {/* Spacer sisi kosong */}
-      <div className="hidden md:block w-[calc(50%-2.5rem)]" />
+      {/* Spacer sisi kosong (menjaga kartu selalu setengah lebar) */}
+      <div className="hidden md:block w-[calc(50%-2.5rem)]" aria-hidden="true" />
     </div>
   );
 }
 
-// ── Props untuk Komponen Utama ─────────────────────────────────────────────────
+// ── Props ──────────────────────────────────────────────────────────────────────
 interface TimelineSectionProps {
   eras: TimelineEra[];
 }
 
-// ── Komponen Utama (Client, menerima data dari Server Wrapper) ────────────────
+// ── Komponen Utama ─────────────────────────────────────────────────────────────
 export default function TimelineSection({ eras }: TimelineSectionProps) {
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-80px' });
@@ -202,15 +246,16 @@ export default function TimelineSection({ eras }: TimelineSectionProps) {
   return (
     <section id="timeline" className="pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden">
 
-      {/* Dekorasi latar */}
+      {/* Dekorasi latar belakang */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#D05B43]/5 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#5C7A5A]/5 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#D4AF37]/3 blur-3xl" />
       </div>
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Header */}
+        {/* ── Header ── */}
         <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -246,14 +291,16 @@ export default function TimelineSection({ eras }: TimelineSectionProps) {
           </motion.p>
         </div>
 
-        {/* Timeline List */}
+        {/* ── Timeline List ── */}
         <div className="relative">
 
-          {/* Garis Vertikal Tengah */}
+          {/* Garis vertikal tengah dengan gradien warna tiap zaman */}
           <div
             className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 rounded-full"
+            aria-hidden="true"
             style={{
-              background: 'linear-gradient(to bottom, #D05B4366, #5C7A5A66, #D4AF3766, #4A7CA866)',
+              background:
+                'linear-gradient(to bottom, #D05B4366, #5C7A5A66, #D4AF3766, #4A7CA866)',
             }}
           />
 

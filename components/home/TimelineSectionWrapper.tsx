@@ -9,16 +9,14 @@ import TimelineSection, {
 } from './TimelineSection';
 
 // ── GROQ Query ─────────────────────────────────────────────────────────────────
-// Mengurutkan berdasarkan field 'order' dan memproyeksikan imageUrl dari aset Sanity.
+// Field disesuaikan dengan skema baru (title, timeframe, description, features, image).
 const TIMELINE_QUERY = `*[_type == "timeline"] | order(order asc) {
   _id,
-  periode,
-  rentangWaktu,
-  "deskripsi": deskripsi.id,
-  ciriUtama,
-  "imageUrl": gambar.asset->url,
-  warna,
-  order
+  title,
+  timeframe,
+  description,
+  features,
+  "imageUrl": image.asset->url
 }`;
 
 // ── Fetch dengan Fallback Berlapis ─────────────────────────────────────────────
@@ -30,24 +28,24 @@ async function getTimelineEras(): Promise<TimelineEra[]> {
       { cache: 'no-store' }
     );
 
-    // Guard 1: array kosong → pakai fallback
+    // Guard 1: bukan array atau kosong → pakai fallback
     if (!Array.isArray(data) || data.length === 0) {
       console.info('[TimelineWrapper] Sanity kosong — menggunakan data statis.');
       return STATIC_TIMELINE;
     }
 
-    // Guard 2: ada item yang field utamanya undefined → pakai fallback
-    const hasInvalidEntry = data.some((era) => !era?.periode);
+    // Guard 2: ada item yang field title-nya undefined/null → pakai fallback
+    const hasInvalidEntry = data.some((era) => !era?.title?.trim());
     if (hasInvalidEntry) {
       console.warn('[TimelineWrapper] Ada data Sanity tidak valid — menggunakan data statis.');
       return STATIC_TIMELINE;
     }
 
-    // Data valid dari Sanity
+    // Data valid dari Sanity ✅
     return data;
 
   } catch (err) {
-    // Guard 3: network error / konfigurasi salah → JANGAN crash
+    // Guard 3: network error / konfigurasi salah → JANGAN crash, pakai fallback
     console.warn('[TimelineWrapper] Fetch Sanity gagal — menggunakan data statis.', err);
     return STATIC_TIMELINE;
   }
