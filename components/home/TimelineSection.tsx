@@ -131,29 +131,28 @@ function ImagePlaceholder({ accent, title }: { accent: string; title: string }) 
 // ── Subkomponen: Satu Item Timeline (alternating kiri ↔ kanan) ────────────────
 function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, margin: '-100px' }); // Trigger pas di-scroll
 
-  // Genap → masuk dari kiri; Ganjil → masuk dari kanan
+  // Genap (0, 2) → di kiri, Ganjil (1, 3) → di kanan
   const isEven = index % 2 === 0;
   const accent = getAccentColor(era.title);
 
   return (
     <div
       ref={ref}
-      className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-0 ${
-        isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-      }`}
+      className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+        }`}
     >
-      {/* ── Kartu Konten ── */}
+      {/* ── Kartu Konten (Animasi Meluncur Kiri/Kanan) ── */}
       <motion.div
-        initial={{ opacity: 0, x: isEven ? -60 : 60 }}
+        initial={{ opacity: 0, x: isEven ? -100 : 100 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full md:w-[calc(50%-2.5rem)]"
+        transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+        className="w-full md:w-[calc(50%-2.5rem)] z-20"
       >
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.5rem] shadow-lg hover:shadow-2xl border border-[#2A2A27]/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden group">
+        <div className="bg-white/90 backdrop-blur-sm rounded-[1.5rem] shadow-lg hover:shadow-2xl border border-[#2A2A27]/5 transition-all duration-500 overflow-hidden group">
 
-          {/* Gambar: tampilkan <img> jika imageUrl ada, placeholder abu-abu jika tidak */}
+          {/* Gambar / Placeholder */}
           {era.imageUrl ? (
             <div className="w-full h-48 overflow-hidden">
               <img
@@ -210,12 +209,12 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         </div>
       </motion.div>
 
-      {/* ── Titik Bernomor di Garis Tengah (hanya tampil md ke atas) ── */}
+      {/* ── Titik Tengah (Animasi Pop) ── */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 200 }}
-        className="relative z-10 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 hidden md:flex items-center justify-center"
+        transition={{ duration: 0.5, delay: 0.3, type: 'spring', stiffness: 200 }}
+        className="absolute left-1/2 -translate-x-1/2 z-30 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 hidden md:flex items-center justify-center"
         style={{
           backgroundColor: accent,
           borderRadius: '50%',
@@ -227,7 +226,7 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         </span>
       </motion.div>
 
-      {/* Spacer sisi kosong (menjaga kartu selalu setengah lebar) */}
+      {/* Spacer sisi kosong */}
       <div className="hidden md:block w-[calc(50%-2.5rem)]" aria-hidden="true" />
     </div>
   );
@@ -240,11 +239,11 @@ interface TimelineSectionProps {
 
 // ── Komponen Utama ─────────────────────────────────────────────────────────────
 export default function TimelineSection({ eras }: TimelineSectionProps) {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const isHeaderInView = useInView(headerRef, { once: true, margin: '-80px' });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isContainerInView = useInView(containerRef, { once: true, margin: '-50px' });
 
   return (
-    <section id="timeline" className="pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden">
+    <section id="timeline" className="pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden bg-[#FAFAF8]">
 
       {/* Dekorasi latar belakang */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -253,55 +252,57 @@ export default function TimelineSection({ eras }: TimelineSectionProps) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#D4AF37]/3 blur-3xl" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10" ref={containerRef}>
 
         {/* ── Header ── */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={isContainerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-4 mb-4"
           >
-            <div className="h-px w-8 bg-[#D05B43]" />
-            <span className="text-[#D05B43] font-bold tracking-[0.2em] text-xs uppercase">
-              Perjalanan Waktu
+            <div className="h-px w-8 bg-[#5C7A5A]" />
+            <span className="text-[#5C7A5A] font-bold tracking-[0.2em] text-xs uppercase">
+              4 Tingkat
             </span>
-            <div className="h-px w-8 bg-[#D05B43]" />
+            <div className="h-px w-8 bg-[#5C7A5A]" />
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={isContainerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-light text-[#2A2A27] tracking-tight mb-4"
           >
-            Zaman{' '}
-            <span className="font-serif italic text-[#D05B43] font-bold">Praaksara</span>
+            Kehidupan{' '}
+            <span className="font-serif italic text-[#5C7A5A] font-bold">Manusia</span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={isContainerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-[#2A2A27]/60 text-base md:text-lg leading-relaxed"
           >
-            Jejak perjalanan umat manusia sebelum mengenal tulisan, dari zaman batu tertua
-            hingga era megalitikum yang penuh misteri.
+            Perjalanan panjang manusia purba dari sekadar bertahan hidup nomaden hingga mampu menciptakan teknologi pengolahan logam.
           </motion.p>
         </div>
 
         {/* ── Timeline List ── */}
         <div className="relative">
 
-          {/* Garis vertikal tengah dengan gradien warna tiap zaman */}
-          <div
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 rounded-full"
-            aria-hidden="true"
+          {/* Garis vertikal tengah Beranimasi */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={isContainerInView ? { scaleY: 1 } : {}}
+            transition={{ duration: 2, ease: "easeInOut" }}
             style={{
-              background:
-                'linear-gradient(to bottom, #D05B4366, #5C7A5A66, #D4AF3766, #4A7CA866)',
+              originY: 0, // Memastikan animasi tumbuh dari atas ke bawah
+              background: 'linear-gradient(to bottom, #D05B4366, #5C7A5A66, #D4AF3766, #4A7CA866)'
             }}
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full z-0"
+            aria-hidden="true"
           />
 
           <div className="flex flex-col gap-16 md:gap-20">

@@ -7,7 +7,6 @@ import type { TeamMember } from '@/types/team';
 
 // ── Helper: Inisial 2 Huruf ────────────────────────────────────────────────────
 function getInitials(name?: string | null): string {
-  // Guard: jika name undefined/null/string kosong → kembalikan placeholder
   if (!name) return '??';
   const cleanName = name.trim();
   if (!cleanName) return '??';
@@ -20,8 +19,12 @@ function getInitials(name?: string | null): string {
 function MemberCard({ member }: { member: TeamMember }) {
   const accent = member.color || '#5C7A5A';
 
-  // Fallback role jika field kosong atau tidak ada
+  // Fallback super kebal untuk menangkap salah nama field di Sanity
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const displayName = member.name || (member as any).title || 'Nama Belum Diisi';
   const displayRole = member.role?.trim() || 'Anggota Tim';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const displayDesc = member.desc || (member as any).description;
 
   return (
     <div className="group relative h-full bg-white/80 border border-[#2A2A27]/5 p-8 md:p-10 rounded-[2rem] flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 transform">
@@ -32,11 +35,11 @@ function MemberCard({ member }: { member: TeamMember }) {
           className="absolute inset-0 rounded-full blur-md opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500"
           style={{ backgroundColor: accent }}
         />
-        {/* Kondisional: tampilkan gambar jika imageUrl tersedia, inisial jika tidak */}
+        {/* Kondisional Gambar / Inisial */}
         {member.imageUrl ? (
           <img
             src={member.imageUrl}
-            alt={member.name ?? 'Foto anggota'}
+            alt={displayName}
             className="relative w-full h-full object-cover rounded-full border border-gray-100 shadow-md grayscale group-hover:grayscale-0 transition-all duration-500"
           />
         ) : (
@@ -44,12 +47,12 @@ function MemberCard({ member }: { member: TeamMember }) {
             className="relative w-full h-full rounded-full border border-gray-100 shadow-md flex items-center justify-center text-white font-serif font-bold text-3xl md:text-4xl select-none grayscale group-hover:grayscale-0 transition-all duration-500"
             style={{ backgroundColor: accent }}
           >
-            {getInitials(member.name ?? undefined)}
+            {getInitials(displayName)}
           </div>
         )}
       </div>
 
-      {/* Badge Role — selalu tampil dengan fallback 'Anggota Tim' */}
+      {/* Badge Role */}
       <div
         className="px-5 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase text-white mb-5 shadow-sm"
         style={{ backgroundColor: accent }}
@@ -59,13 +62,13 @@ function MemberCard({ member }: { member: TeamMember }) {
 
       {/* Nama */}
       <h3 className="text-2xl font-serif font-bold text-[#2A2A27] mb-3">
-        {member.name ?? 'Unknown'}
+        {displayName}
       </h3>
 
-      {/* Deskripsi — dari field description Sanity (diprojeksi sebagai desc) */}
-      {member.desc && (
+      {/* Deskripsi */}
+      {displayDesc && (
         <p className="text-[#2A2A27]/70 text-sm leading-relaxed font-medium">
-          {member.desc}
+          {displayDesc}
         </p>
       )}
     </div>
@@ -129,12 +132,12 @@ export default function TeamCarousel({ members }: TeamCarouselProps) {
 
   const handlePrev = () => { goPrev(); startInterval(); };
   const handleNext = () => { goNext(); startInterval(); };
-  const handleDot  = (i: number) => { setCurrentIndex(i); startInterval(); };
+  const handleDot = (i: number) => { setCurrentIndex(i); startInterval(); };
 
-  const cardWidthPercent  = 100 / visibleCount;
+  const cardWidthPercent = 100 / visibleCount;
   const translateXPercent = -(currentIndex * cardWidthPercent);
-  const totalDots         = maxIndex + 1;
-  const showControls      = members.length > visibleCount;
+  const totalDots = maxIndex + 1;
+  const showControls = members.length > visibleCount;
 
   return (
     <section id="tim" className="pt-24 pb-16 md:pt-32 md:pb-20 relative overflow-hidden">

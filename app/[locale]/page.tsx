@@ -1,5 +1,4 @@
 import HeroSection from '@/components/home/HeroSection';
-import TimelineSectionWrapper from '@/components/home/TimelineSectionWrapper';
 import TeamSection from '@/components/home/TeamSection';
 import PhilosophySection from '@/components/home/PhilosophySection';
 import ProcessSection from '@/components/home/ProcessSection';
@@ -19,7 +18,6 @@ export default async function Home({
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection />
-      <TimelineSectionWrapper />
       <TeamSection />
       <PhilosophySection />
       <ProcessSection />

@@ -53,14 +53,12 @@ const STATIC_MEMBERS: TeamMember[] = [
 ];
 
 // ── GROQ Query ──────────────────────────────────────────────────────────────────
-// Mengambil URL gambar via projeksion asset->url dan mengurutkan berdasarkan field order.
+// Mengambil semua data (...) ditambah URL gambar, agar kebal dari salah nama field
 const TEAM_QUERY = `*[_type == "team"] | order(order asc) {
-  _id,
-  name,
-  role,
-  "imageUrl": image.asset->url,
-  "desc": description
+  ...,
+  "imageUrl": image.asset->url
 }`;
+
 
 // ── Fetch dengan Fallback Kebal Error ─────────────────────────────────────────
 async function getTeamMembers(): Promise<TeamMember[]> {
