@@ -7,10 +7,14 @@ import { client } from '@/lib/sanity';
 // ── Tipe Data ──────────────────────────────────────────────────────────────────
 interface TimelineItem {
   _id: string;
-  id: string;
+  id?: string;
+  order?: number;
   title: string;
-  tag: string;
-  desc: string;
+  tag?: string;
+  timeframe?: string;
+  desc?: string;
+  description?: string;
+  features?: string[];
   imageUrl?: string;
 }
 
@@ -32,31 +36,12 @@ const fallbackTimelineData: TimelineItem[] = [
     desc: "Manusia mulai tinggal di gua (abris sous roche) dan memanfaatkan tepi sungai/pantai. Penemuan tumpukan kulit kerang (kjokkenmoddinger) membuktikan pola hidup semi-sedenter yang mulai terbentuk.",
     imageUrl: "/images/mesolitikum.jpg",
   },
-  {
-    _id: "03",
-    id: "03",
-    title: "Neolitikum & Megalitikum",
-    tag: "FOOD PRODUCING",
-    desc: "Revolusi besar terjadi: manusia beralih dari food gathering ke food producing. Mereka mulai bercocok tanam, hidup menetap, menghaluskan alat batu, dan membangun batu besar (menhir, dolmen) untuk pemujaan nenek moyang.",
-    imageUrl: "/images/neolitikum.jpg",
-  },
-  {
-    _id: "04",
-    id: "04",
-    title: "Zaman Perundagian",
-    tag: "PENGOLAHAN LOGAM",
-    desc: "Muncul golongan undagi yang ahli mengolah perunggu dan besi. Pembagian kerja menjadi sangat jelas dalam masyarakat, menghasilkan artefak presisi tinggi seperti nekara, moko, dan berbagai perhiasan logam.",
-    imageUrl: "/images/perundagian.jpg",
-  },
 ];
 
-// ── GROQ Query ─────────────────────────────────────────────────────────────────
-const TIMELINE_QUERY = `*[_type == "timeline"] | order(id asc) {
-  _id,
-  id,
-  title,
-  tag,
-  desc,
+// ── GROQ Query SAPU JAGAT ──────────────────────────────────────────────────────
+// Mengambil SEMUA field (...), sehingga tidak peduli nama fieldnya timeframe atau tag, description atau desc.
+const TIMELINE_QUERY = `*[_type == "timeline"] | order(order asc, id asc) {
+  ...,
   "imageUrl": image.asset->url
 }`;
 
@@ -73,7 +58,6 @@ export default function TimelineSection() {
         if (data && data.length > 0) {
           setTimelineData(data);
         }
-        // Jika kosong, biarkan fallback yang aktif
       } catch (err) {
         console.warn("[TimelineSection] Gagal fetch dari Sanity, menggunakan data lokal.", err);
       } finally {
@@ -126,16 +110,13 @@ export default function TimelineSection() {
             <div className="space-y-20 md:space-y-32">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="relative flex flex-col md:flex-row items-center justify-between animate-pulse">
-                  {/* Badge angka */}
                   <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-[#2A2A27]/10 md:-translate-x-1/2 z-10" />
-                  {/* Teks */}
                   <div className="w-full md:w-5/12 pl-24 md:pl-0 md:pr-16 space-y-3">
                     <div className="h-5 w-28 bg-[#2A2A27]/10 rounded-full" />
                     <div className="h-8 w-48 bg-[#2A2A27]/10 rounded" />
                     <div className="h-4 w-full bg-[#2A2A27]/10 rounded" />
                     <div className="h-4 w-4/5 bg-[#2A2A27]/10 rounded" />
                   </div>
-                  {/* Gambar */}
                   <div className="w-full md:w-5/12 pl-24 md:pl-16 mt-8 md:mt-0">
                     <div className="w-full aspect-[4/3] rounded-3xl bg-[#2A2A27]/10" />
                   </div>
@@ -146,8 +127,13 @@ export default function TimelineSection() {
             /* Mapping Data Tingkatan */
             timelineData.map((item, index) => {
               const isEven = index % 2 === 0;
-              // Konten kiri (isEven) slide dari kiri, konten kanan slide dari kanan
               const xFrom = isEven ? -80 : 80;
+
+              // Fallback Mata Elang: Jika timeframe tidak ada, cari tag. Jika description tidak ada, cari desc.
+              const displayTag = item.timeframe || item.tag || "ZAMAN PRAAKSARA";
+              const displayDesc = item.description || item.desc || "Deskripsi belum tersedia.";
+              // Nomor urut (bisa dari field order, id, atau index)
+              const displayNumber = item.order || item.id || `0${index + 1}`;
 
               return (
                 <motion.div
@@ -162,22 +148,39 @@ export default function TimelineSection() {
 
                   {/* 1. Badge Angka di Tengah */}
                   <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-white/90 border-4 border-[#2A2A27] md:-translate-x-1/2 flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    <span className="text-[#2A2A27] font-bold font-serif text-xl">{item.id}</span>
+                    <span className="text-[#2A2A27] font-bold font-serif text-xl">{displayNumber}</span>
                   </div>
 
                   {/* 2. Kolom Teks (Materi) */}
                   <div className={`w-full md:w-5/12 pl-24 md:pl-0 flex flex-col justify-center group
                     ${isEven ? 'md:pr-16 md:text-right md:items-end' : 'md:pl-16 md:text-left md:items-start'}
                   `}>
+                    {/* Badge Tag / Timeframe */}
                     <div className="inline-block bg-[#5C7A5A]/10 text-[#5C7A5A] font-bold text-[10px] tracking-widest px-4 py-1.5 rounded-full mb-4 uppercase">
-                      {item.tag}
+                      {displayTag}
                     </div>
+
+                    {/* Judul Zaman */}
                     <h3 className="text-2xl md:text-4xl font-serif font-bold text-[#2A2A27] mb-4 group-hover:text-[#D05B43] transition-colors duration-300">
                       {item.title}
                     </h3>
-                    <p className="text-[#2A2A27]/80 text-sm md:text-base leading-relaxed font-medium">
-                      {item.desc}
+
+                    {/* Deskripsi */}
+                    <p className="text-[#2A2A27]/80 text-sm md:text-base leading-relaxed font-medium mb-4">
+                      {displayDesc}
                     </p>
+
+                    {/* Ciri-Ciri (Features) */}
+                    {item.features && item.features.length > 0 && (
+                      <ul className={`space-y-2 mt-2 w-full ${isEven ? 'flex flex-col items-end text-right' : 'flex flex-col items-start text-left'}`}>
+                        {item.features.map((feat, i) => (
+                          <li key={i} className={`flex items-start gap-2.5 text-sm text-[#2A2A27]/80 ${isEven ? 'flex-row-reverse' : 'flex-row'}`}>
+                            <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#5C7A5A]" />
+                            {feat}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   {/* 3. Kolom Foto */}
@@ -192,12 +195,10 @@ export default function TimelineSection() {
                           className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                         />
                       ) : (
-                        /* Placeholder jika belum ada gambar di Sanity */
                         <div className="w-full h-full bg-[#2A2A27]/10 flex items-center justify-center">
                           <span className="text-[#2A2A27]/40 text-sm font-medium">Gambar belum tersedia</span>
                         </div>
                       )}
-                      {/* Overlay Tipis Biar Estetik */}
                       <div className="absolute inset-0 bg-[#2A2A27]/10 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
                   </div>
