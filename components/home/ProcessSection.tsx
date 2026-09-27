@@ -68,7 +68,7 @@ export default function TimelineSection() {
   }, []);
 
   return (
-    <section id="timeline" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="timeline" className="py-24 md:py-32 relative overflow-hidden bg-transparent">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── HEADER SECTION ── */}
@@ -83,8 +83,8 @@ export default function TimelineSection() {
             Evolusi Peradaban
           </span>
           <h2 className="text-4xl md:text-6xl font-light text-[#2A2A27] mb-6 tracking-tight">
-            4 Tingkat <br />
-            <span className="font-serif italic text-[#5C7A5A]">Kehidupan Manusia</span>
+            Berburu dan Mengumpulkan Makanan <br />
+            <span className="font-serif italic text-[#5C7A5A]">Tingkat Sederhana</span>
           </h2>
           <p className="text-[#2A2A27]/90 text-lg font-medium leading-relaxed max-w-2xl mx-auto">
             Perjalanan panjang manusia purba dari sekadar bertahan hidup nomaden hingga mampu menciptakan teknologi pengolahan logam.
@@ -147,7 +147,7 @@ export default function TimelineSection() {
                 >
 
                   {/* 1. Badge Angka di Tengah */}
-                  <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-white/90 border-4 border-[#2A2A27] md:-translate-x-1/2 flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute left-8 md:left-1/2 w-14 h-14 rounded-full bg-white/90 border-4 border-[#BF953F] md:-translate-x-1/2 flex items-center justify-center z-10 shadow-2xl group-hover:scale-110 transition-transform duration-500">
                     <span className="text-[#2A2A27] font-bold font-serif text-xl">{displayNumber}</span>
                   </div>
 

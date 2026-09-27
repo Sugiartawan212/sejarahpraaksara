@@ -151,7 +151,7 @@ export default function QuizSection() {
     };
 
     return (
-        <section id="quiz" className="py-24 md:py-32 relative overflow-hidden" ref={ref}>
+        <section id="quiz" className="py-24 md:py-32 relative overflow-hidden bg-transparent" ref={ref}>
             <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
 
                 {/* Header Kuis (Mirip Header Testimoni) */}
@@ -184,7 +184,7 @@ export default function QuizSection() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-[#E2DECA]/80 backdrop-blur-sm border border-white/40 p-8 md:p-12 rounded-[2rem] shadow-xl min-h-[450px] flex flex-col justify-center relative overflow-hidden"
+                    className="bg-white backdrop-blur-sm border border-[#BF953F]/20 p-8 md:p-12 rounded-[2rem] shadow-2xl min-h-[450px] flex flex-col justify-center relative overflow-hidden"
                 >
                     <AnimatePresence mode="wait">
                         {showScore ? (
@@ -248,7 +248,7 @@ export default function QuizSection() {
                                         const isSelected = selectedOption === index;
 
                                         // Logika pewarnaan tombol saat dijawab
-                                        let buttonStyle = "bg-white text-[#2A2A27]/80 hover:bg-[#F5F5F5] border-transparent";
+                                        let buttonStyle = "bg-white text-[#2A2A27]/80 hover:bg-gray-50 border border-[#2A2A27]/10";
                                         if (isAnswered) {
                                             if (isCorrect) {
                                                 buttonStyle = "bg-[#5C7A5A] text-white border-[#5C7A5A] shadow-md"; // Hijau kalau benar

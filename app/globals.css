@@ -11,9 +11,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ── Global Background: Desert Sand ── */
+/* ── Global Background: Vibrant Gold ── */
 body {
-  background-color: #F2EBE5;
+  background-color: #FFD700;
 }
 
 /* ── Ken Burns Keyframe (CSS fallback) ── */
@@ -29,7 +29,7 @@ body {
 .best-deals-swiper .swiper-button-next,
 .best-deals-swiper .swiper-button-prev {
   color: #D05B43 !important;
-  background-color: rgb(242 235 229 / 90%);
+  background-color: rgb(255 215 0 / 90%);
   width: 50px !important;
   height: 50px !important;
   border-radius: 50%;

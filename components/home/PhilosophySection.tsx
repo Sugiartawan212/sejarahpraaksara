@@ -6,7 +6,7 @@ import { Quote, ArrowRight } from 'lucide-react';
 
 export default function PengertianSection() {
   return (
-    <section id="pengertian" className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
+    <section id="pengertian" className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden bg-transparent">
 
       {/* Teks Watermark Raksasa di Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14vw] font-serif font-bold text-[#2A2A27] opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
@@ -97,11 +97,11 @@ export default function PengertianSection() {
               absolute -bottom-10 md:bottom-8
               -left-4 md:-left-12
               w-[92%] md:w-[88%]
-              bg-[#FDFBF7]
+              bg-white
               p-7 md:p-9
               rounded-3xl
               shadow-2xl
-              border border-[#2A2A27]/8
+              border border-[#BF953F]/20
               z-20 relative
             ">
               <Quote className="w-9 h-9 text-[#5C7A5A] mb-3 opacity-50" strokeWidth={1.5} />

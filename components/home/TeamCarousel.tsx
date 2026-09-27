@@ -27,7 +27,7 @@ function MemberCard({ member }: { member: TeamMember }) {
   const displayDesc = member.desc || (member as any).description;
 
   return (
-    <div className="group relative h-full bg-white/80 border border-[#2A2A27]/5 p-8 md:p-10 rounded-[2rem] flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 transform">
+    <div className="group relative h-full bg-white border border-[#BF953F]/20 p-8 md:p-10 rounded-[2rem] flex flex-col items-center text-center shadow-2xl hover:shadow-[0_30px_60px_-10px_rgba(179,135,40,0.35)] transition-all duration-500 hover:-translate-y-2 transform">
 
       {/* Avatar */}
       <div className="relative w-28 h-28 md:w-32 md:h-32 mb-6">
@@ -140,7 +140,7 @@ export default function TeamCarousel({ members }: TeamCarouselProps) {
   const showControls = members.length > visibleCount;
 
   return (
-    <section id="tim" className="pt-24 pb-16 md:pt-32 md:pb-20 relative overflow-hidden">
+    <section id="tim" className="pt-24 pb-16 md:pt-32 md:pb-20 relative overflow-hidden bg-transparent">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10" ref={ref}>
 
         {/* Header */}
@@ -183,7 +183,7 @@ export default function TeamCarousel({ members }: TeamCarouselProps) {
                 onClick={handlePrev}
                 aria-label="Slide sebelumnya"
                 className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-20
-                           w-11 h-11 rounded-full bg-white shadow-lg border border-[#2A2A27]/10
+                           w-11 h-11 rounded-full bg-[#FFD700] shadow-lg border border-[#2A2A27]/20
                            flex items-center justify-center
                            hover:bg-[#5C7A5A] hover:border-[#5C7A5A] group/btn
                            transition-all duration-300 active:scale-95"
@@ -216,7 +216,7 @@ export default function TeamCarousel({ members }: TeamCarouselProps) {
                 onClick={handleNext}
                 aria-label="Slide berikutnya"
                 className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-20
-                           w-11 h-11 rounded-full bg-white shadow-lg border border-[#2A2A27]/10
+                           w-11 h-11 rounded-full bg-[#FFD700] shadow-lg border border-[#2A2A27]/20
                            flex items-center justify-center
                            hover:bg-[#5C7A5A] hover:border-[#5C7A5A] group/btn
                            transition-all duration-300 active:scale-95"

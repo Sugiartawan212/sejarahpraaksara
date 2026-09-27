@@ -150,7 +150,7 @@ function TimelineItem({ era, index }: { era: TimelineEra; index: number }) {
         transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
         className="w-full md:w-[calc(50%-2.5rem)] z-20"
       >
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.5rem] shadow-lg hover:shadow-2xl border border-[#2A2A27]/5 transition-all duration-500 overflow-hidden group">
+        <div className="bg-white backdrop-blur-sm rounded-[1.5rem] shadow-2xl hover:shadow-[0_30px_60px_-10px_rgba(179,135,40,0.3)] border border-[#BF953F]/20 transition-all duration-500 overflow-hidden group">
 
           {/* Gambar / Placeholder */}
           {era.imageUrl ? (
@@ -243,7 +243,7 @@ export default function TimelineSection({ eras }: TimelineSectionProps) {
   const isContainerInView = useInView(containerRef, { once: true, margin: '-50px' });
 
   return (
-    <section id="timeline" className="pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden bg-[#FAFAF8]">
+    <section id="timeline" className="pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden bg-transparent">
 
       {/* Dekorasi latar belakang */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

@@ -154,7 +154,7 @@ export default async function LocaleLayout({
         />
       </head>
       {/* Background utama diset ke warna gelap (Dark Charcoal) agar transisi halaman terasa eksklusif */}
-      <body className="bg-sky-100 text-[#EBE7E0] antialiased selection:bg-sky-400 selection:text-white">
+      <body className="bg-gradient-to-br from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-[#2A2A27] antialiased selection:bg-[#B38728] selection:text-white min-h-screen">
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           <main className="min-h-screen">

@@ -51,7 +51,7 @@ function FunFactCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -6, scale: 1.02 }}
-      className="flex flex-col bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/80 hover:shadow-2xl hover:border-blue-200 transition-shadow duration-300"
+      className="flex flex-col bg-white/15 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/30 hover:shadow-2xl hover:border-white/60 transition-shadow duration-300"
     >
       {/* Gambar */}
       <img
@@ -66,15 +66,15 @@ function FunFactCard({
         <span className="text-3xl">{emoji}</span>
 
         {/* Judul Card */}
-        <h3 className="text-lg font-bold text-slate-800 leading-snug">
+        <h3 className="text-lg font-bold text-white leading-snug">
           {title}
         </h3>
 
         {/* Divider */}
-        <div className="w-10 h-0.5 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-full" />
+        <div className="w-10 h-0.5 bg-gradient-to-r from-[#BF953F] to-[#FCF6BA] rounded-full" />
 
         {/* Deskripsi */}
-        <p className="text-slate-700 text-sm leading-relaxed">{description}</p>
+        <p className="text-white/90 text-sm leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );
@@ -85,7 +85,7 @@ export default function FunFactSection() {
   return (
     <section
       id="funfact"
-      className="w-full py-20 px-4 md:px-12 xl:px-20"
+      className="w-full py-20 px-4 md:px-12 xl:px-20 bg-gradient-to-br from-[#0A192F] via-[#112240] to-[#020C1B] shadow-[inset_0_0_80px_rgba(0,0,0,0.5)]"
     >
       {/* Header */}
       <motion.div
@@ -96,21 +96,21 @@ export default function FunFactSection() {
         className="text-center mb-14"
       >
         {/* Label kecil */}
-        <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-sky-600 mb-3">
+        <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-white/80 mb-3">
           Fakta Menarik
         </span>
 
         {/* Judul utama */}
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
           Tahukah Kamu?{' '}
-          <span className="text-yellow-400 drop-shadow-sm">💡</span>
+          <span className="text-yellow-300 drop-shadow-sm">💡</span>
         </h2>
 
         {/* Garis dekoratif */}
-        <div className="mt-4 mx-auto w-16 h-1 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-full" />
+        <div className="mt-4 mx-auto w-16 h-1 bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#BF953F] rounded-full shadow-[0_0_12px_rgba(191,149,63,0.6)]" />
 
         {/* Subtitle */}
-        <p className="mt-4 text-slate-600 max-w-xl mx-auto text-sm md:text-base">
+        <p className="mt-4 text-white/80 max-w-xl mx-auto text-sm md:text-base">
           Fakta-fakta mengejutkan dari kehidupan manusia di zaman praaksara yang
           mungkin belum pernah kamu bayangkan sebelumnya.
         </p>
