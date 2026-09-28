@@ -83,8 +83,8 @@ export default function TimelineSection() {
             Evolusi Peradaban
           </span>
           <h2 className="text-4xl md:text-6xl font-light text-[#2A2A27] mb-6 tracking-tight">
-            Berburu dan Mengumpulkan Makanan <br />
-            <span className="font-serif italic text-[#5C7A5A]">Tingkat Sederhana</span>
+            Tingkatan Kehidupan Manusia <br />
+            <span className="font-serif italic text-[#5C7A5A]">pada Masa Praaksara</span>
           </h2>
           <p className="text-[#2A2A27]/90 text-lg font-medium leading-relaxed max-w-2xl mx-auto">
             Perjalanan panjang manusia purba dari sekadar bertahan hidup nomaden hingga mampu menciptakan teknologi pengolahan logam.
